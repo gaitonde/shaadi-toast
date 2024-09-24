@@ -2,7 +2,6 @@
 
 import { Playfair_Display, Poppins } from 'next/font/google'
 import { Pen, Sparkles, MessageCircle } from 'lucide-react'
-import Image from "next/image"
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ['400', '600', '700'], subsets: ['latin'] })

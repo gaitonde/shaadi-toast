@@ -10,8 +10,6 @@ const inter = Inter({ subsets: ['latin'] })
 const merriweather = Merriweather({ weight: '400', subsets: ['latin'] })
 
 function SpeechContent({ content }: { content: string }) {
-  console.log('AAA speechContent', content)
-
   const words = content.split(' ')
   const visibleContent = words.slice(0, 100).join(' ')
   const blurredContent = words.slice(100, 200).join(' ')

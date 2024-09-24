@@ -168,23 +168,26 @@ export function LandingPage() {
               {
                 name: "Laura D",
                 role: "Maid of honor",
-                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn&apos;t have done it without this amazing tool!"
+                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn&apos;t have done it without this amazing tool!",
+                image: "/images/laura-d.jpg"
               },
               {
                 name: "Arun P",
                 role: "Father of the bride",
-                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I&apos;ll cherish forever."
+                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I&apos;ll cherish forever.",
+                image: "/images/arun-p.jpg"
               },
               {
                 name: "Sanjay M",
                 role: "Best man",
-                content: "As someone who dreads public speaking, I was nervous about my best man speech. ShaadiToast made the process incredibly easy and fun! The AI-generated draft captured my style perfectly. With just a few personal tweaks, I had a speech that had everyone laughing and crying in less than 30 minutes. The groom even joked that I should become a professional speechwriter. Thank you, ShaadiToast, for helping me nail this important moment!"
+                content: "As someone who dreads public speaking, I was nervous about my best man speech. ShaadiToast made the process incredibly easy and fun! The AI-generated draft captured my style perfectly. With just a few personal tweaks, I had a speech that had everyone laughing and crying in less than 30 minutes. The groom even joked that I should become a professional speechwriter. Thank you, ShaadiToast, for helping me nail this important moment!",
+                image: "/images/sanjay-m.jpg"
               }
             ].map((testimonial, index) => (
               <div key={index} className="bg-[#8b0000] text-white p-6 rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
                   <Image
-                    src="/images/shaaditoast-1.jpg"
+                    src={testimonial.image}
                     alt={testimonial.name}
                     width={50}
                     height={50}
@@ -259,7 +262,8 @@ export function LandingPage() {
           <p className="text-lg md:text-xl text-[#333] mb-8 max-w-2xl mx-auto">
             Your heartfelt speech is just moments away. Begin your journey to a memorable toast - no account needed.
           </p>
-          <button className="bg-[#8b0000] text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-[#a50000] transition-colors duration-300">
+          <button className="bg-[#8b0000] text-white font-semibold py-3 px-8 rounded-full text-lg hover:bg-[#a50000] transition-colors duration-300"
+          onClick={handleStartWriting}>
             Craft Your Speech
           </button>
         </section>

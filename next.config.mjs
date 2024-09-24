@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'g-x0ne832xhr0.vusercontent.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

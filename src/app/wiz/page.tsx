@@ -103,7 +103,7 @@ const Wizard = () => {
 
         const result = await response.json();
 
-        router.push(`/results?speech=${result.speech}`);
+        router.push(`/speech?speech=${result.speech}`);
       } catch (error) {
         console.error('Error generating speech:', error);
         // Handle error (e.g., show error message to user)

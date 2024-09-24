@@ -24,7 +24,7 @@ export function LandingPage() {
             <h1 className={`text-5xl font-bold text-[#8b0000] mr-4 ${playfairDisplay.className}`}>
               Create Your Personalized Desi Wedding Speech
             </h1>
-            <Image
+            <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-N6VboDqm7nvHmvP1rdyOjatPDIFpwl.png"
               alt="Colorful traditional Indian dhol drum"
               width={100}
@@ -41,7 +41,7 @@ export function LandingPage() {
         </section>
 
         <section className="mb-16">
-          <Image
+          <img
             src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
             alt="Desi wedding celebration"
             width={1200}
@@ -108,7 +108,7 @@ export function LandingPage() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <Image
+              <img
                 src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
                 alt="Effortless and personal speech writing"
                 width={400}
@@ -126,7 +126,7 @@ export function LandingPage() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <Image
+              <img
                 src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
                 alt="Enhanced speech writing"
                 width={400}
@@ -165,7 +165,7 @@ export function LandingPage() {
             ].map((testimonial, index) => (
               <div key={index} className="bg-[#8b0000] text-white p-6 rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
-                  <Image
+                  <img
                     src={`https://placehold.co/100x100/ffd700/8b0000?text=${testimonial.name.charAt(0)}`}
                     alt={testimonial.name}
                     width={50}

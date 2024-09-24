@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: 'price_1Q2cY7R8kMC0X94hIslMnmFi',
+          price: 'price_1Q2cY7R8kMC0X94hIslMnmFi', //hard-coded price for now (this ties to the price in the Stripe Sanddbox)
           quantity: 1,
         },
       ],
@@ -24,8 +24,8 @@ export async function POST(req: Request) {
     } else {
       return NextResponse.redirect(`${req.headers.get('origin')}/?error=true`, { status: 303 });
     }
-  } catch (err: any) {
+  } catch (err) {
     console.error("Stripe error. Unable to create checkout session.", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    return NextResponse.json({ error: err }, { status: 500 });
   }
 }

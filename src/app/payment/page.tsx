@@ -1,6 +1,4 @@
 'use client';
-require('dotenv').config(); // Load dotenv configuration
-
 import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 

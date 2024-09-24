@@ -2,6 +2,7 @@
 
 import { Playfair_Display, Poppins } from 'next/font/google'
 import { Pen, Sparkles, MessageCircle } from 'lucide-react'
+import Image from "next/image"
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ['400', '600', '700'], subsets: ['latin'] })
@@ -23,7 +24,7 @@ export function LandingPage() {
             <h1 className={`text-5xl font-bold text-[#8b0000] mr-4 ${playfairDisplay.className}`}>
               Create Your Personalized Desi Wedding Speech
             </h1>
-            <img
+            <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-N6VboDqm7nvHmvP1rdyOjatPDIFpwl.png"
               alt="Colorful traditional Indian dhol drum"
               width={100}
@@ -40,7 +41,7 @@ export function LandingPage() {
         </section>
 
         <section className="mb-16">
-          <img
+          <Image
             src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
             alt="Desi wedding celebration"
             width={1200}
@@ -71,7 +72,7 @@ export function LandingPage() {
               </div>
               <h3 className={`text-2xl font-semibold text-[#8b0000] mb-2 ${playfairDisplay.className}`}>2. Refine Your Words</h3>
               <p className="text-[#333]">
-                Our AI assistant helps organize your thoughts into a coherent, flowing speech. You'll have a draft to review and personalize further.
+                Our AI assistant helps organize your thoughts into a coherent, flowing speech. You&apos;ll have a draft to review and personalize further.
               </p>
             </div>
             <div className="flex flex-col items-center">
@@ -80,7 +81,7 @@ export function LandingPage() {
               </div>
               <h3 className={`text-2xl font-semibold text-[#8b0000] mb-2 ${playfairDisplay.className}`}>3. Deliver with Confidence</h3>
               <p className="text-[#333]">
-                Practice your polished speech. With your personal touches and our structure, you'll feel prepared to share your heartfelt words on the big day.
+                Practice your polished speech. With your personal touches and our structure, you&apos;ll feel prepared to share your heartfelt words on the big day.
               </p>
             </div>
           </div>
@@ -95,7 +96,7 @@ export function LandingPage() {
               Your Personal Speech Writing Companion
             </h2>
             <p className="text-xl text-[#333] max-w-3xl mx-auto">
-              Our tool combines your personal touch with AI assistance to create a speech that's uniquely yours. It's designed to enhance your ideas, not replace them, ensuring your voice shines through.
+              Our tool combines your personal touch with AI assistance to create a speech that&apos;s uniquely yours. It&apos;s designed to enhance your ideas, not replace them, ensuring your voice shines through.
             </p>
           </div>
 
@@ -107,7 +108,7 @@ export function LandingPage() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img
+              <Image
                 src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
                 alt="Effortless and personal speech writing"
                 width={400}
@@ -125,7 +126,7 @@ export function LandingPage() {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img
+              <Image
                 src="https://placehold.co/200x400/000000/FF0000?text=ShaadiToast+Image"
                 alt="Enhanced speech writing"
                 width={400}
@@ -138,10 +139,10 @@ export function LandingPage() {
 
         <section className="mb-16">
           <h2 className={`text-4xl font-bold text-[#8b0000] mb-6 text-center ${playfairDisplay.className}`}>
-            Don't take our word for it
+            Don&apos;t take our word for it
           </h2>
           <p className="text-xl text-[#333] max-w-3xl mx-auto mb-12 text-center">
-            Our AI-powered speeches have been the highlight of countless weddings. But don't just take our word for it, hear from those who have toasted with us.
+            Our AI-powered speeches have been the highlight of countless weddings. But don&apos;t just take our word for it, hear from those who have toasted with us.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -149,7 +150,7 @@ export function LandingPage() {
               {
                 name: "Saloni D",
                 role: "Maid of honor",
-                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech terrified me. ShaadiToast was a lifesaver! It helped me craft a speech that was both funny and touching. The AI understood the nuances of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn't have done it without this amazing tool!"
+                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech terrified me. ShaadiToast was a lifesaver! It helped me craft a speech that was both funny and touching. The AI understood the nuances of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn&apos;t have done it without this amazing tool!"
               },
               {
                 name: "Sanjay M",
@@ -159,12 +160,12 @@ export function LandingPage() {
               {
                 name: "Arun P",
                 role: "Father of the bride",
-                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I'll cherish forever."
+                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I&apos;ll cherish forever."
               }
             ].map((testimonial, index) => (
               <div key={index} className="bg-[#8b0000] text-white p-6 rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
-                  <img
+                  <Image
                     src={`https://placehold.co/100x100/ffd700/8b0000?text=${testimonial.name.charAt(0)}`}
                     alt={testimonial.name}
                     width={50}

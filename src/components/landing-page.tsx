@@ -2,17 +2,27 @@
 
 import { Playfair_Display, Poppins } from 'next/font/google'
 import { Pen, Sparkles, MessageCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const playfairDisplay = Playfair_Display({ subsets: ['latin'] })
 const poppins = Poppins({ weight: ['400', '600', '700'], subsets: ['latin'] })
 
 export function LandingPage() {
+  const router = useRouter()
+
+  const handleStartWriting = () => {
+    router.push('/wiz')
+  }
+
   return (
     <div className={`min-h-screen bg-[#fff5e6] ${poppins.className}`}>
       <header className="bg-[#8b0000] text-white py-4 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <h1 className={`text-2xl ${playfairDisplay.className}`}>ShaadiToast</h1>
-          <button className="bg-[#ffa500] text-[#8b0000] font-semibold py-2 px-4 rounded-full text-sm hover:bg-[#ff8c00] transition-colors duration-300">
+          <button
+            className="bg-[#ffa500] text-[#8b0000] font-semibold py-2 px-4 rounded-full text-sm hover:bg-[#ff8c00] transition-colors duration-300"
+            onClick={handleStartWriting}
+          >
             Start Writing
           </button>
         </div>
@@ -34,7 +44,10 @@ export function LandingPage() {
           <p className="text-xl text-[#333] mb-8">
             Express your emotions with ease. Our AI-assisted tool, powered by ChatGPT, helps you craft a personal, culturally rich wedding speech that resonates with your audience.
           </p>
-          <button className="bg-[#ffa500] text-[#8b0000] font-semibold py-3 px-8 rounded-full text-lg hover:bg-[#ff8c00] transition-colors duration-300">
+          <button
+            className="bg-[#ffa500] text-[#8b0000] font-semibold py-3 px-8 rounded-full text-lg hover:bg-[#ff8c00] transition-colors duration-300"
+            onClick={handleStartWriting}
+          >
             Start Writing
           </button>
         </section>

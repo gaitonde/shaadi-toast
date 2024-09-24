@@ -3,7 +3,7 @@
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
 import { useSearchParams } from "next/navigation"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -30,7 +30,8 @@ function SpeechContent({ content }: { content: string }) {
   )
 }
 
-export default function SpeechPage() {
+// Create a new component that uses useSearchParams
+function SpeechPageContent() {
   const [speechContent, setSpeechContent] = useState('')
   const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
@@ -49,7 +50,6 @@ export default function SpeechPage() {
     const email = localStorage.getItem('email') || ''
     setEmail(email)
   }, [searchParams, speechContent])
-
 
   console.log('PPP speechContent', speechContent?.length)
   console.log('PPP email', email)
@@ -149,5 +149,14 @@ export default function SpeechPage() {
         </footer>
       </div>
     </>
+  )
+}
+
+// Modify the main SpeechPage component
+export default function SpeechPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SpeechPageContent />
+    </Suspense>
   )
 }

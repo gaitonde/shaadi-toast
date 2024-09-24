@@ -1,19 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
-import { Merriweather, Inter } from 'next/font/google'
-import { CreditCard } from 'lucide-react'
 
 const merriweather = Merriweather({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
 
 export function SpeechPage() {
-  const [cardNumber, setCardNumber] = useState('')
-  const [expiry, setExpiry] = useState('')
-  const [cvc, setCvc] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('card')
-
   const toastContent = "Let me start by saying, Hari is one of the most genuine, kind-hearted, and loyal people I know. Over the years, we've shared countless memories—some of them funny, some of them a bit embarrassing—but through it all, Hari has always been the steady, thoughtful friend we all admire.\n\nWhen he met Seema, everything changed. Suddenly, this calm, collected guy had an extra spark, a sense of excitement. It wasn't long before I realized why. Seema is amazing. She's smart, kind, and has a presence that lights up any room she's in. Together, Hari and Seema are the perfect match, balancing each other in a way that's truly inspiring. Their love is full of warmth, respect, and laughter, which is exactly what marriage is all about.\n\nHari, Seema, you two are embarking on an incredible journey together. I have no doubt that your love and partnership will carry you through all of life's ups and downs.\n\nSo, let's raise a glass to the newlyweds—Hari and Seema! May your life together be filled with endless joy and love!"
 
   const words = toastContent.split(' ')
@@ -61,88 +54,7 @@ export function SpeechPage() {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex space-x-4 mb-4">
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('apple')}
-                  className="flex-1"
-                  aria-label="Pay with Apple Pay"
-                >
-                  <img
-                    src="https://g-x0ne832xhr0.vusercontent.net/placeholder.svg?height=44&width=160"
-                    alt="Apple Pay"
-                    width={160}
-                    height={44}
-                    className="w-full h-auto"
-                  />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('paypal')}
-                  className="flex-1"
-                  aria-label="Pay with PayPal"
-                >
-                  <img
-                    src="https://g-x0ne832xhr0.vusercontent.net/placeholder.svg?height=44&width=160"
-                    alt="PayPal"
-                    width={160}
-                    height={44}
-                    className="w-full h-auto"
-                  />
-                </button>
               </div>
-              {paymentMethod === 'card' && (
-                <>
-                  <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700">
-                      Card number
-                    </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <CreditCard className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        type="text"
-                        id="card-number"
-                        value={cardNumber}
-                        onChange={(e) => setCardNumber(e.target.value)}
-                        required
-                        className="block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="1234 1234 1234 1234"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex-1">
-                      <label htmlFor="expiry" className="block text-sm font-medium text-gray-700">
-                        Expiry
-                      </label>
-                      <input
-                        type="text"
-                        id="expiry"
-                        value={expiry}
-                        onChange={(e) => setExpiry(e.target.value)}
-                        required
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="MM / YY"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <label htmlFor="cvc" className="block text-sm font-medium text-gray-700">
-                        CVC
-                      </label>
-                      <input
-                        type="text"
-                        id="cvc"
-                        value={cvc}
-                        onChange={(e) => setCvc(e.target.value)}
-                        required
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="123"
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
               <button
                 type="submit"
                 className="w-full bg-[#8b0000] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#a50000] transition-colors duration-300"

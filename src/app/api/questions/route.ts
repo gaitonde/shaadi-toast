@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { createQuestionsTable, getQuestions, addQuestion, Question } from '@/lib/db/models/question';
 
-export async function GET(request: Request) {
+export async function GET() {
       const questions = await getQuestions();
       return NextResponse.json({ questions });
 }

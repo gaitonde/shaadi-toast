@@ -2,7 +2,7 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const serviceAccountAuth = new JWT({
       email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -10,8 +10,6 @@ export async function GET(request: Request) {
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
-    console.log("SERVICE ACCOUNT AUTH email: ", serviceAccountAuth.email);
-    console.log("SERVICE ACCOUNT AUTH key: ", serviceAccountAuth.key);
     const doc = new GoogleSpreadsheet('1VrRNi7H8tdFKn_MHvMSFxahE_JUODtYi1_IlfYNKItg', serviceAccountAuth);
     await doc.loadInfo();
     console.log("DOC TITLE: ", doc.title);

@@ -19,7 +19,6 @@ export async function insertQuestions(questionData: {
   questionType: string;
   // options: string[];
 }) {
-  const now = new Date().toDateString();
 
   // choices = '${choices}',
   // updated_at = '${now}'
@@ -44,7 +43,6 @@ export async function updateQuestions(questionData: {
   questionType: string;
   // options: string[];
 }) {
-  const now = new Date().toDateString();
 
   // choices = '${choices}',
   // updated_at = '${now}'
@@ -64,7 +62,7 @@ export async function getQuestionByKey(key: string) {
   return runQuery(query, false, [key]);
 }
 
-async function runQuery(query: string, isInsert: boolean, values: any[] = []) {
+async function runQuery(query: string, isInsert: boolean, values: unknown[] = []) {
   const client = await connect();
   try {
     const result = await client.query(query, values);

@@ -72,7 +72,7 @@ export function LandingPage() {
               </div>
               <h3 className={`text-xl md:text-2xl font-semibold text-[#8b0000] mb-2 ${merriweather.className}`}>2. Refine Your Words</h3>
               <p className="text-base text-[#333]">
-                Our AI assistant helps organize your thoughts into a coherent, flowing speech. You'll have a draft to review and personalize further.
+                Our AI assistant helps organize your thoughts into a coherent, flowing speech. You&apos;ll have a draft to review and personalize further.
               </p>
             </div>
             <div className="flex flex-col items-center">
@@ -81,7 +81,7 @@ export function LandingPage() {
               </div>
               <h3 className={`text-xl md:text-2xl font-semibold text-[#8b0000] mb-2 ${merriweather.className}`}>3. Deliver with Confidence</h3>
               <p className="text-base text-[#333]">
-                Practice your polished speech. With your personal touches and our structure, you'll feel prepared to share your personalized words on the big day.
+                Practice your polished speech. With your personal touches and our structure, you&apos;ll feel prepared to share your personalized words on the big day.
               </p>
             </div>
           </div>
@@ -96,7 +96,7 @@ export function LandingPage() {
               Your Personal Speech Writing Companion
             </h2>
             <p className="text-lg md:text-xl text-[#333] max-w-3xl mx-auto">
-              Our tool combines your personal touch with AI assistance to create a speech that's uniquely yours. It's designed to enhance your ideas, not replace them, ensuring your voice shines through.
+              Our tool combines your personal touch with AI assistance to create a speech that&apos;s uniquely yours. It&apos;s designed to enhance your ideas, not replace them, ensuring your voice shines through.
             </p>
           </div>
 
@@ -160,7 +160,7 @@ export function LandingPage() {
             Hear from our happy users
           </h2>
           <p className="text-lg md:text-xl text-[#333] max-w-3xl mx-auto mb-12 text-center">
-            Our AI-powered speeches have been the highlight of countless weddings. But don't just take our word for it, hear from those who have toasted with us.
+            Our AI-powered speeches have been the highlight of countless weddings. But don&apos;t just take our word for it, hear from those who have toasted with us.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -168,12 +168,12 @@ export function LandingPage() {
               {
                 name: "Laura D",
                 role: "Maid of honor",
-                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn't have done it without this amazing tool!"
+                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn&apos;t have done it without this amazing tool!"
               },
               {
                 name: "Arun P",
                 role: "Father of the bride",
-                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I'll cherish forever."
+                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I&apos;ll cherish forever."
               },
               {
                 name: "Sanjay M",
@@ -209,27 +209,27 @@ export function LandingPage() {
             {[
               {
                 question: "Why is ShaadiToast the right choice for me?",
-                answer: "ShaadiToast is perfect if you want to give a memorable speech but feel unsure about writing it. It's great for those who are short on time, nervous about public speaking, or just want to ensure their words truly resonate with the couple and guests."
+                answer: "ShaadiToast is perfect if you want to give a memorable speech but feel unsure about writing it. It&apos;s great for those who are short on time, nervous about public speaking, or just want to ensure their words truly resonate with the couple and guests."
               },
               {
                 question: "How do I create my speech using ShaadiToast?",
-                answer: "It's simple! Just select your speech type and answer a few questions about the couple and your relationship. Our AI then uses this information to craft a personalized speech that captures your voice and sentiments. You'll get your custom speech in seconds."
+                answer: "It&apos;s simple! Just select your speech type and answer a few questions about the couple and your relationship. Our AI then uses this information to craft a personalized speech that captures your voice and sentiments. You&apos;ll get your custom speech in seconds."
               },
               {
-                question: "What's the technology behind ShaadiToast?",
+                question: "What&apos;s the technology behind ShaadiToast?",
                 answer: "ShaadiToast uses advanced AI, powered by ChatGPT, to analyze your input and create a unique speech. It considers your writing style, the stories you share, and your desired tone to produce a speech that sounds authentically like you."
               },
               {
                 question: "How will I receive my speech?",
-                answer: "After completing our questionnaire, you'll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
+                answer: "After completing our questionnaire, you&apos;ll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
               },
               {
                 question: "What can I expect in terms of speech quality?",
-                answer: "You'll get a high-quality, personalized speech based on your input. While the AI does an excellent job, you might want to review and make minor adjustments to ensure everything is 100% accurate and to your liking."
+                answer: "You&apos;ll get a high-quality, personalized speech based on your input. While the AI does an excellent job, you might want to review and make minor adjustments to ensure everything is 100% accurate and to your liking."
               },
               {
-                question: "What's the typical length of a ShaadiToast speech?",
-                answer: "Most speeches are between 500-700 words, which translates to about 3-5 minutes when spoken. The length can vary based on how much information you provide. You're always free to add or remove content as you see fit."
+                question: "What&apos;s the typical length of a ShaadiToast speech?",
+                answer: "Most speeches are between 500-700 words, which translates to about 3-5 minutes when spoken. The length can vary based on how much information you provide. You&apos;re always free to add or remove content as you see fit."
               },
               {
                 question: "What types of wedding speeches can ShaadiToast help with?",
@@ -237,11 +237,11 @@ export function LandingPage() {
               },
               {
                 question: "How quickly can ShaadiToast generate my speech?",
-                answer: "Once you've completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It's perfect whether you're planning well in advance or need a great speech at the last minute."
+                answer: "Once you&apos;ve completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It&apos;s perfect whether you&apos;re planning well in advance or need a great speech at the last minute."
               },
               {
                 question: "Is my ShaadiToast speech truly original?",
-                answer: "Each speech is created uniquely based on the information you provide. We don't use templates, ensuring your speech is one-of-a-kind and personal to you and the couple."
+                answer: "Each speech is created uniquely based on the information you provide. We don&apos;t use templates, ensuring your speech is one-of-a-kind and personal to you and the couple."
               }
             ].map((faq, index) => (
               <div key={index}>

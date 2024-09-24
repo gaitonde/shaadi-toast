@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       line_items: [
         {
           price: 'price_1Q2cY7R8kMC0X94hIslMnmFi',
-          quantity: 2,
+          quantity: 1,
         },
       ],
       mode: 'payment',

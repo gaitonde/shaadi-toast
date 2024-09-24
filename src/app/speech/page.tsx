@@ -49,13 +49,6 @@ export default function SpeechPage() {
   const [expiry, setExpiry] = useState('')
   const [cvc, setCvc] = useState('')
   const [paymentMethod, setPaymentMethod] = useState('card')
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Here you would typically handle the payment processing and email sending
-    console.log('Processing payment...')
-  }
-
   return (
     <>
       <Head>
@@ -80,7 +73,8 @@ export default function SpeechPage() {
             <p className="text-lg text-[#333] mb-6">
               Unlock 3 versions of your complete, personalized speech for just $4.99.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            /api/create-checkout-session
+            <form action="/api/create-checkout-session" method="POST">
               <div className="flex space-x-4 mb-4">
                 <button
                   type="button"
@@ -122,7 +116,6 @@ export default function SpeechPage() {
                         id="card-number"
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value)}
-                        required
                         className="block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
                         placeholder="1234 1234 1234 1234"
                       />
@@ -138,7 +131,6 @@ export default function SpeechPage() {
                         id="expiry"
                         value={expiry}
                         onChange={(e) => setExpiry(e.target.value)}
-                        required
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
                         placeholder="MM / YY"
                       />
@@ -152,7 +144,6 @@ export default function SpeechPage() {
                         id="cvc"
                         value={cvc}
                         onChange={(e) => setCvc(e.target.value)}
-                        required
                         className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
                         placeholder="123"
                       />

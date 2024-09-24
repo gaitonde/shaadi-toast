@@ -102,6 +102,10 @@ const Wizard = () => {
         }
 
         const result = await response.json();
+        if(localStorage) {
+          localStorage.setItem('speechResult', JSON.stringify(result));
+          localStorage.setItem('email', formData.email as string);
+        }
 
         router.push(`/speech?speech=${result.speech}`);
       } catch (error) {
@@ -126,8 +130,6 @@ const Wizard = () => {
       onPrevious: handlePrevious,
       value: formData[(card as { key: string }).key] || '',
     };
-
-    console.log('xxx commonProps: ', commonProps);
 
     switch ((card as { type: string }).type.toLowerCase()) {
       case 'text':

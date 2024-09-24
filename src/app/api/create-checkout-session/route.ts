@@ -6,6 +6,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export async function POST(req: Request) {
+  console.log('XXX in here');
+  const { email } = await req.json();
+  console.log('XXX in here');
+  console.log('email', email);
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
@@ -15,12 +19,20 @@ export async function POST(req: Request) {
         },
       ],
       mode: 'payment',
-      customer_email: 'test@test.com',
+      customer_email: email,
       success_url: `${req.headers.get('origin')}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/checkout/canceled`,
+      cancel_url: `${req.headers.get('origin')}/speech`,
     });
+
+    console.log('XXX123 session', session.url);
+
     if (session.url) {
-      return NextResponse.redirect(session.url, { status: 303 });
+      return NextResponse.redirect(session.url, {
+        status: 303,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      });
     } else {
       return NextResponse.redirect(`${req.headers.get('origin')}/?error=true`, { status: 303 });
     }

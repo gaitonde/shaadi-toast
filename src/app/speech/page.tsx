@@ -1,10 +1,10 @@
 'use client'
 
-import { Suspense } from 'react'
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
 import { useSearchParams } from "next/navigation"
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 const merriweather = Merriweather({ weight: '400', subsets: ['latin'] })
@@ -33,11 +33,48 @@ function SpeechContent({ content }: { content: string }) {
 export default function SpeechPage() {
   const [speechContent, setSpeechContent] = useState('')
   const searchParams = useSearchParams()
+  const [email, setEmail] = useState('')
 
   useEffect(() => {
     const speech = searchParams.get('speech') || ''
-    setSpeechContent(speech)
-  }, [searchParams])
+    if (!speech) {
+      const localSpeech = localStorage.getItem('speechResult') || ''
+      const json = localSpeech ? JSON.parse(localSpeech) : {}
+      console.log('AAAXXX speech', json.speech)
+      setSpeechContent(json.speech)
+    } else {
+      setSpeechContent(speech)
+    }
+
+    const email = localStorage.getItem('email') || ''
+    setEmail(email)
+  }, [searchParams, speechContent])
+
+
+  console.log('PPP speechContent', speechContent?.length)
+  console.log('PPP email', email)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        // Handle the response, e.g., redirect to Stripe checkout
+        window.location.href = data.url;
+      } else {
+        // Handle errors
+        console.error('Checkout session creation failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <>
@@ -48,14 +85,13 @@ export default function SpeechPage() {
       <div className={`min-h-screen bg-[#fff5e6] ${inter.className}`}>
         <header className="bg-[#8b0000] text-white py-4 sticky top-0 z-50">
           <div className="container mx-auto px-4">
-            <h1 className={`text-2xl ${merriweather.className} font-bold`}>ShaadiToast</h1>
+            <Link href="/" className={`text-2xl ${merriweather.className} font-bold hover:text-[#ffd700] transition-colors duration-300`}>
+              ShaadiToast
+            </Link>
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-24">
-          <Suspense fallback={<div>Loading...</div>}>
-            <SpeechContent content={speechContent} />
-          </Suspense>
-
+          {speechContent && <SpeechContent content={speechContent} />}
           <section className="bg-white p-6 rounded-lg shadow-lg">
             <h2 className={`text-2xl font-bold text-[#8b0000] mb-4 ${merriweather.className}`}>
               Get Your Full Speech
@@ -64,7 +100,7 @@ export default function SpeechPage() {
               Unlock your complete personalized speech for just $4.99.
             </p>
 
-            <form action="/api/create-checkout-session" method="POST">
+            <form onSubmit={handleSubmit}>
               <button
                 type="submit"
                 className="w-full bg-[#8b0000] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#a50000] transition-colors duration-300"

@@ -42,7 +42,7 @@ export function LandingPage() {
 
         <section className="mb-16">
           <Image
-            src="https://placehold.co/200x400/000000/FF0000/png?text=ShaadiToast+Image"
+            src="/images/shaaditoast-1.jpg"
             alt="Desi wedding celebration"
             width={200}
             height={400}
@@ -109,7 +109,7 @@ export function LandingPage() {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="https://placehold.co/200x400/000000/FF0000/png?text=ShaadiToast+Image"
+                src="/images/shaaditoast-2.jpg"
                 alt="Effortless and personal speech writing"
                 width={200}
                 height={400}
@@ -127,7 +127,7 @@ export function LandingPage() {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="https://placehold.co/200x400/000000/FF0000/png?text=ShaadiToast+Image"
+                src="/images/shaaditoast-3.jpg"
                 alt="Enhanced speech writing"
                 width={400}
                 height={300}
@@ -145,7 +145,7 @@ export function LandingPage() {
             </div>
             <div className="md:w-1/2">
               <Image
-                src="https://placehold.co/200x400/000000/FF0000/png?text=ShaadiToast+Image"
+                src="/images/shaaditoast-4.jpg"
                 alt="Stress-free speech writing"
                 width={200}
                 height={400}
@@ -184,7 +184,7 @@ export function LandingPage() {
               <div key={index} className="bg-[#8b0000] text-white p-6 rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
                   <Image
-                    src={`https://placehold.co/100x100/ffd700/8b0000/png?text=${testimonial.name.charAt(0)}`}
+                    src="/images/shaaditoast-1.jpg"
                     alt={testimonial.name}
                     width={50}
                     height={50}

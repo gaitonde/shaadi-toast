@@ -1,12 +1,6 @@
-// 'use client'
-
-// const merriweather = Merriweather({ subsets: ['latin'], weight: ['300', '400', '700', '900'] })
-// const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
-
 'use client'
 
 import { Suspense } from 'react'
-import { CreditCard } from 'lucide-react'
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
 import { useSearchParams } from "next/navigation"
@@ -15,21 +9,15 @@ import { useEffect, useState } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 const merriweather = Merriweather({ weight: '400', subsets: ['latin'] })
 
-function SpeechContent() {
-  const [speechContent, setSpeechContent] = useState('')
-  const searchParams = useSearchParams()
+function SpeechContent({ content }: { content: string }) {
+  console.log('AAA speechContent', content)
 
-  useEffect(() => {
-    const speech = searchParams.get('speech') || ''
-    setSpeechContent(speech)
-  }, [searchParams])
-
-  const words = speechContent.split(' ')
+  const words = content.split(' ')
   const visibleContent = words.slice(0, 100).join(' ')
-  const blurredContent = words.slice(100).join(' ')
+  const blurredContent = words.slice(100, 200).join(' ')
 
   return (
-    <section className="text-center mb-16">
+    <section className="text-center mb-8">
       <h1 className={`text-4xl md:text-5xl font-bold text-[#8b0000] mb-6 ${merriweather.className} leading-tight`}>
         Your Toast is Ready!
       </h1>
@@ -45,10 +33,14 @@ function SpeechContent() {
 }
 
 export default function SpeechPage() {
-  const [cardNumber, setCardNumber] = useState('')
-  const [expiry, setExpiry] = useState('')
-  const [cvc, setCvc] = useState('')
-  const [paymentMethod, setPaymentMethod] = useState('card')
+  const [speechContent, setSpeechContent] = useState('')
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const speech = searchParams.get('speech') || ''
+    setSpeechContent(speech)
+  }, [searchParams])
+
   return (
     <>
       <Head>
@@ -63,7 +55,7 @@ export default function SpeechPage() {
         </header>
         <main className="max-w-4xl mx-auto px-4 py-24">
           <Suspense fallback={<div>Loading...</div>}>
-            <SpeechContent />
+            <SpeechContent content={speechContent} />
           </Suspense>
 
           <section className="bg-white p-6 rounded-lg shadow-lg">
@@ -71,86 +63,10 @@ export default function SpeechPage() {
               Get Your Full Speech
             </h2>
             <p className="text-lg text-[#333] mb-6">
-              Unlock 3 versions of your complete, personalized speech for just $4.99.
+              Unlock your complete personalized speech for just $4.99.
             </p>
-            /api/create-checkout-session
+
             <form action="/api/create-checkout-session" method="POST">
-              <div className="flex space-x-4 mb-4">
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('apple')}
-                  className="flex-1"
-                  aria-label="Pay with Apple Pay"
-                >
-                  <img
-                    src="https://g-x0ne832xhr0.vusercontent.net/placeholder.svg?height=44&width=160"
-                    alt="Apple Pay"
-                    className="w-full h-auto"
-                  />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('paypal')}
-                  className="flex-1"
-                  aria-label="Pay with PayPal"
-                >
-                  <img
-                    src="https://g-x0ne832xhr0.vusercontent.net/placeholder.svg?height=44&width=160"
-                    alt="PayPal"
-                    className="w-full h-auto"
-                  />
-                </button>
-              </div>
-              {paymentMethod === 'card' && (
-                <>
-                  <div>
-                    <label htmlFor="card-number" className="block text-sm font-medium text-gray-700">
-                      Card number
-                    </label>
-                    <div className="mt-1 relative rounded-md shadow-sm">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <CreditCard className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        type="text"
-                        id="card-number"
-                        value={cardNumber}
-                        onChange={(e) => setCardNumber(e.target.value)}
-                        className="block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="1234 1234 1234 1234"
-                      />
-                    </div>
-                  </div>
-                  <div className="flex space-x-4">
-                    <div className="flex-1">
-                      <label htmlFor="expiry" className="block text-sm font-medium text-gray-700">
-                        Expiry
-                      </label>
-                      <input
-                        type="text"
-                        id="expiry"
-                        value={expiry}
-                        onChange={(e) => setExpiry(e.target.value)}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="MM / YY"
-                      />
-                    </div>
-                    <div className="flex-1">
-                      <label htmlFor="cvc" className="block text-sm font-medium text-gray-700">
-                        CVC
-                      </label>
-                      <input
-                        type="text"
-                        id="cvc"
-                        value={cvc}
-                        onChange={(e) => setCvc(e.target.value)}
-                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-[#8b0000] focus:border-[#8b0000]"
-                        placeholder="123"
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
               <button
                 type="submit"
                 className="w-full bg-[#8b0000] text-white font-semibold py-2 px-4 rounded-md hover:bg-[#a50000] transition-colors duration-300"

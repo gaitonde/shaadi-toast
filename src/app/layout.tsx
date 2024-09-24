@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "TODO:__Browser_Title_Update_Me__",
-  description: "TODO:__App_Description_Update_Me__",
+  title: "Shaadi Toast",
+  description: "Cheesy Shaadi Toast",
 };
 
 export default function RootLayout({

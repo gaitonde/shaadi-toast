@@ -40,9 +40,6 @@ export function InputTextCard({
   };
 
   const handleNextClick = useCallback(() => {
-    console.log('XXX inputValue', inputValue)
-    console.log('XXX inputType', inputType)
-    debugger
     if (isRequired && inputValue.trim() === '') {
       setIsError(true)
       setErrorMessage('This field is required.')

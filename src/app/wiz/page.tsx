@@ -86,7 +86,7 @@ const Wizard = () => {
             clearInterval(interval);
             return 100; // Stop at 100%
           }
-          return prevPercent + 15;
+          return prevPercent + 10;
         });
       }, 500); // Update every 500ms
     }
@@ -138,8 +138,8 @@ const Wizard = () => {
       } catch (error) {
         console.error('Error generating speech:', error);
         // Handle error (e.g., show error message to user)
-      } finally {
-        setIsLoading(false);
+      // } finally {
+        // setIsLoading(false);
       }
     }
   };
@@ -169,13 +169,19 @@ const Wizard = () => {
       onPrevious: handlePrevious,
       isRequired: card.props.isRequired,
       isTextArea: card.props.isTextArea,
-      value: formData[(card as { key: string }).key] || '',
+      value: formData
+      [(card as { key: string }).key] || '',
+
     };
 
     console.log('XXX COMMONPROPS VALUE', card.key)
+    console.log('XXX COMMONPROPS VALUE', card.type)
+    console.log('XXX COMMONPROPS YYY', (card as { type: string }).type.toLowerCase())
 
     switch ((card as { type: string }).type.toLowerCase()) {
-      case 'text':
+      case ('text'):
+      case ('textarea'):
+        console.log('XXX1234 COMMONPROPS YYY', (card as { type: string }).type.toLowerCase())
         return <InputTextCard
           {...commonProps}
           title={card.props.title}

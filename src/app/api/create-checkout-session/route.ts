@@ -18,11 +18,10 @@ export async function POST(req: Request) {
       ],
       mode: 'payment',
       customer_email: email,
-      success_url: `${req.headers.get('origin')}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.get('origin')}/speech`,
     });
 
-    console.log('XXX123 session', session.url);
     return NextResponse.json({ url: session.url });
   } catch (err) {
     console.error("Stripe error. Unable to create checkout session.", err);

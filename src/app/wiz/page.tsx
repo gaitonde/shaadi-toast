@@ -49,7 +49,6 @@ const Wizard = () => {
           throw new Error('Failed to fetch questions');
         }
         const data = await response.json();
-        console.log("XXX: question data back from db: ", data.questions);
         const formattedCards: FormattedCard[] = data.questions.map((question : Question) => ({
           type: question.type,
           key: question.key,
@@ -61,11 +60,9 @@ const Wizard = () => {
             subTitle: question.subTitle,
           },
         }));
-        console.log("XXX: formattedCards: ", formattedCards);
         setWizardCards(formattedCards);
       } catch (error) {
         console.error('Error fetching questions:', error);
-        // Handle error (e.g., show error message to user)
       }
     };
 
@@ -128,6 +125,7 @@ const Wizard = () => {
     const commonProps = {
       onNext: handleNext,
       onPrevious: handlePrevious,
+      isTextArea: false,
       value: formData[(card as { key: string }).key] || '',
     };
 
@@ -151,7 +149,7 @@ const Wizard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center">
+    <div className="min-h-screen min-w-[400px] bg-[#FAF7F2] flex items-center justify-center">
       {renderCard()}
     </div>
   );

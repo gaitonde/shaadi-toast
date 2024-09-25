@@ -11,9 +11,10 @@ export interface InputTextCardProps {
   value: string;
   onNext: (str: string) => void;
   onPrevious: () => void;
+  isTextArea?: boolean; // New prop
 }
 
-export function InputTextCard({ title, subTitle, isRequired = false, placeholder, caption, value, onNext, onPrevious }: InputTextCardProps) {
+export function InputTextCard({ title, subTitle, isRequired = false, placeholder, caption, value, onNext, onPrevious, isTextArea = false }: InputTextCardProps) {
   const [inputValue, setInputValue] = useState(value)
   const [isError, setIsError] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -71,7 +72,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] p-4">
+    <div className="min-h-screen flex items-center justify-center bg-[#FAF7F2] p-4 min-w-[1200px]">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h2 className={`text-2xl text-center ${isError ? 'text-red-500' : 'text-gray-800'}`}>
@@ -88,18 +89,33 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
           </p>
 
           <div className="mb-2">
-            <input
-              ref={inputRef}
-              type="text"
-              className={`w-full p-3 border rounded-md ${
-                isError ? 'border-red-500' : 'border-blue-300'
-              } text-black`}
-              value={inputValue}
-              onChange={handleInputChange}
-              onBlur={handleInputBlur}
-              placeholder={placeholder}
-              aria-label={title}
-            />
+            {isTextArea ? (
+              <textarea
+                // ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+                className={`w-full p-3 border rounded-md ${
+                  isError ? 'border-red-500' : 'border-blue-300'
+                } text-black`}
+                value={inputValue}
+                // onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLInputElement>)}
+                onBlur={handleInputBlur}
+                placeholder={placeholder}
+                aria-label={title}
+                rows={4}
+              />
+            ) : (
+              <input
+                ref={inputRef as React.RefObject<HTMLInputElement>}
+                type="text"
+                className={`w-full p-3 border rounded-md ${
+                  isError ? 'border-red-500' : 'border-blue-300'
+                } text-black`}
+                value={inputValue}
+                onChange={handleInputChange}
+                onBlur={handleInputBlur}
+                placeholder={placeholder}
+                aria-label={title}
+              />
+            )}
           </div>
 
           <p className="text-sm text-gray-500">

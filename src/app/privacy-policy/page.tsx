@@ -28,21 +28,21 @@ export default function PrivacyPolicy() {
               <p className="font-bold">Last Updated: 10th September 2024</p>
 
               <p>
-                ShaadiToast ($quot;ShaadiToast,$quot; $quot;we,$quot; $quot;us,$quot; and $quot;our$quot;) provides an AI-powered service to assist our customers in crafting personalized speeches for any occasion. This Privacy Policy is designed to help you understand how we collect, use, and share your personal information and to help you understand and exercise your privacy rights.
+                ShaadiToast (&quot;ShaadiToast,&quot; &quot;we,&quot; &quot;us,&quot; and &quot;our&quot;) provides an AI-powered service to assist our customers in crafting personalized speeches for any occasion. This Privacy Policy is designed to help you understand how we collect, use, and share your personal information and to help you understand and exercise your privacy rights.
               </p>
 
               <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
                 Scope
               </h2>
               <p>
-                This Privacy Policy applies to personal information processed by us on our website, through our services offered via the website, and our related online and offline offerings. To make this Privacy Policy easier to read, our websites, services, and related offerings are collectively called $quot;Services.$quot;
+                This Privacy Policy applies to personal information processed by us on our website, through our services offered via the website, and our related online and offline offerings. To make this Privacy Policy easier to read, our websites, services, and related offerings are collectively called &quot;Services.&quot;
               </p>
 
               <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
                 Changes to Our Privacy Policy
               </h2>
               <p>
-                We may revise this Privacy Policy from time to time in our sole discretion. If there are any material changes, we will update the Privacy Policy here and change the $quot;Last Updated$quot; date.
+                We may revise this Privacy Policy from time to time in our sole discretion. If there are any material changes, we will update the Privacy Policy here and change the &quot;Last Updated&quot; date.
               </p>
 
               <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>

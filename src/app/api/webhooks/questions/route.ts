@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   console.debug('in prompt webhook')
 
   try {
-    console.debug('in webhook json: ', request.json())
+    // console.debug('in webhook json: ', request.json())
 
     try {
       const serviceAccountAuth = new JWT({

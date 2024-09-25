@@ -39,6 +39,9 @@ export async function GET(request: Request) {
       questions.push(questionData);
       console.log("QUESTION DATA: ", questionData);
 
+      const relations = questionData.questionType.toLowerCase() === 'multiplechoice' ? questionData.relations.split(',') : [];
+      console.log("RELATIONS: ", relations);
+
       const question = await getQuestionByKey(questionData.key);
       if (question.length > 0) {
         updateQuestions({
@@ -48,7 +51,7 @@ export async function GET(request: Request) {
           placeholder: questionData.placeholder,
           isRequired: questionData.isRequired,
           questionType: questionData.questionType,
-          relations: questionData.relations
+          relations: relations
         });
       } else {
         insertQuestions({
@@ -58,7 +61,7 @@ export async function GET(request: Request) {
           placeholder: questionData.placeholder,
           isRequired: questionData.isRequired,
           questionType: questionData.questionType,
-          relations: questionData.relations
+          relations: relations
         });
       }
     }

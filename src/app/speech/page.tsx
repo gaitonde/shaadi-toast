@@ -51,8 +51,6 @@ function SpeechPageContent() {
     setEmail(email)
   }, [searchParams, speechContent])
 
-  console.log('PPP speechContent', speechContent?.length)
-  console.log('PPP email', email)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {

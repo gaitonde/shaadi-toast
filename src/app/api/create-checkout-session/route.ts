@@ -6,10 +6,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 });
 
 export async function POST(req: Request) {
-  console.log('XXX in here');
   const { email } = await req.json();
-  console.log('XXX in here');
-  console.log('email', email);
+
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
@@ -25,19 +23,9 @@ export async function POST(req: Request) {
     });
 
     console.log('XXX123 session', session.url);
-
-    if (session.url) {
-      return NextResponse.redirect(session.url, {
-        status: 303,
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      });
-    } else {
-      return NextResponse.redirect(`${req.headers.get('origin')}/?error=true`, { status: 303 });
-    }
+    return NextResponse.json({ url: session.url });
   } catch (err) {
     console.error("Stripe error. Unable to create checkout session.", err);
-    return NextResponse.json({ error: err }, { status: 500 });
+    return NextResponse.json({ url: `${req.headers.get('origin')}/speech` });
   }
 }

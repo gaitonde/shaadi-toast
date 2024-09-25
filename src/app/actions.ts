@@ -17,19 +17,20 @@ export async function insertQuestions(questionData: {
   placeholder: string;
   isRequired: boolean;
   questionType: string;
-  // options: string[];
+  relations: string[];
 }) {
 
   // choices = '${choices}',
   // updated_at = '${now}'
   // console.log('relations: ', questionData.options);
-  runQuery(`INSERT INTO shaadi_toast_questions(type, key, title, placeholder, is_required, sub_title) VAlUES(
+  runQuery(`INSERT INTO shaadi_toast_questions(type, key, title, placeholder, is_required, sub_title, relations) VAlUES(
     '${questionData.questionType}',
     '${questionData.key}',
     '${questionData.question}',
     '${questionData.placeholder}',
     '${questionData.isRequired}',
-    '${questionData.subTitle}'
+    '${questionData.subTitle}',
+    '${questionData.relations}'
   );
   `, false);
 }
@@ -41,7 +42,7 @@ export async function updateQuestions(questionData: {
   placeholder: string;
   isRequired: boolean;
   questionType: string;
-  // options: string[];
+  relations: string[];
 }) {
 
   // choices = '${choices}',
@@ -52,7 +53,8 @@ export async function updateQuestions(questionData: {
     title = '${questionData.question}',
     placeholder = '${questionData.placeholder}',
     is_required = '${questionData.isRequired}',
-    sub_title = '${questionData.subTitle}'
+    sub_title = '${questionData.subTitle}',
+    relations = '${questionData.relations}'
     WHERE key = '${questionData.key}';
   `, false);
 }

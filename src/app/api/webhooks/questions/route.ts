@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   console.debug('in prompt webhook')
 
   try {
-    console.debug('in webhook json: ', request.json)
+    console.debug('in webhook json: ', request.json())
 
     try {
       const serviceAccountAuth = new JWT({
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
       console.log("DOC TITLE: ", doc.title);
 
       const sheet = doc.sheetsById[1469416569];
-      console.log(sheet.title);
+      console.log("SHEET TITLE: ", sheet.title);
 
       const rows = await sheet.getRows({limit: 10});
       const questions = [];
@@ -39,6 +39,8 @@ export async function GET(request: Request) {
           relations: row.get('Choices')
         };
         questions.push(questionData);
+        console.log("QUESTION DATA: ", questionData);
+
         const question = await getQuestionByKey(questionData.key);
         if (question.length > 0) {
           updateQuestions({
@@ -48,6 +50,7 @@ export async function GET(request: Request) {
             placeholder: questionData.placeholder,
             isRequired: questionData.isRequired,
             questionType: questionData.questionType,
+            relations: questionData.relations
           });
         } else {
           insertQuestions({
@@ -56,7 +59,8 @@ export async function GET(request: Request) {
             subTitle: questionData.subText,
             placeholder: questionData.placeholder,
             isRequired: questionData.isRequired,
-            questionType: questionData.questionType
+            questionType: questionData.questionType,
+            relations: questionData.relations
           });
         }
       }

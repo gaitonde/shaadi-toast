@@ -1,18 +1,17 @@
 import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2024-06-20', // Use the latest API version
-});
+import { createStripeClient } from '@/lib/stripeServer';
 
 export async function POST(req: Request) {
-  const { email } = await req.json();
+  let { email, useSandbox } = await req.json();
+
+  const stripe = createStripeClient(useSandbox);
+  const price = useSandbox ? process.env.PRODUCT_ID_TEST : process.env.PRODUCT_ID_LIVE;
 
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: 'price_1Q2cY7R8kMC0X94hIslMnmFi', //hard-coded price for now (this ties to the price in the Stripe Sanddbox)
+          price: price,
           quantity: 1,
         },
       ],

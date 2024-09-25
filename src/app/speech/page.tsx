@@ -35,13 +35,13 @@ function SpeechPageContent() {
   const [speechContent, setSpeechContent] = useState('')
   const searchParams = useSearchParams()
   const [email, setEmail] = useState('')
+  const [useSandbox, setUseSandbox] = useState(false)
 
   useEffect(() => {
     const speech = searchParams.get('speech') || ''
     if (!speech) {
       const localSpeech = localStorage.getItem('speechResult') || ''
       const json = localSpeech ? JSON.parse(localSpeech) : {}
-      console.log('AAAXXX speech', json.speech)
       setSpeechContent(json.speech)
     } else {
       setSpeechContent(speech)
@@ -49,6 +49,8 @@ function SpeechPageContent() {
 
     const email = localStorage.getItem('email') || ''
     setEmail(email)
+    const useSandbox = localStorage.getItem('useSandbox') === 'true'
+    setUseSandbox(useSandbox)
   }, [searchParams, speechContent])
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -59,7 +61,7 @@ function SpeechPageContent() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, useSandbox }),
       });
       if (response.ok) {
         const data = await response.json();

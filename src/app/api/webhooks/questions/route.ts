@@ -25,6 +25,8 @@ export async function GET(request: Request) {
     const rows = await sheet.getRows({limit: 10});
     const questions = [];
 
+    await deleteAllQuestions();
+
     for(let i=0; i<rows.length; i++) {
       const row = rows[i];
       const questionData = {
@@ -54,7 +56,6 @@ export async function GET(request: Request) {
       //     relations: relations
       //   });
       // } else {
-        deleteAllQuestions();
         insertQuestions({
           key: questionData.key,
           question: questionData.question,

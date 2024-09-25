@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { createStripeClient } from '@/lib/stripeServer';
 
 export async function POST(req: Request) {
-  let { email, useSandbox } = await req.json();
+  const { email, useSandbox } = await req.json();
 
   const stripe = createStripeClient(useSandbox);
   const price = useSandbox ? process.env.PRODUCT_ID_TEST : process.env.PRODUCT_ID_LIVE;

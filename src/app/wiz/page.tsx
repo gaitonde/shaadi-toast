@@ -165,6 +165,7 @@ const Wizard = () => {
     const commonProps = {
       onNext: handleNext,
       onPrevious: handlePrevious,
+      isRequired: card.props.isRequired,
       isTextArea: false,
       value: formData[(card as { key: string }).key] || '',
     };

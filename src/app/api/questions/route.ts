@@ -12,8 +12,7 @@ export async function POST(request: Request) {
 
   try {
     const requestData = await request.json();
-    console.log(requestData);
-    const { type, key, title, placeholder, isRequired, relations, subTitle } = requestData;
+    const { type, key, title, placeholder, is_required, relations, subTitle } = requestData;
 
     // Validate required fields
     if (!type || !key || !title) {
@@ -32,7 +31,7 @@ export async function POST(request: Request) {
       key,
       title,
       placeholder: placeholder || null,
-      isRequired: isRequired || false,
+      isRequired: is_required || false,
       relations: formattedRelations || undefined,
       subTitle: subTitle || null,
     };

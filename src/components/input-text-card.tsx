@@ -11,7 +11,7 @@ export interface InputTextCardProps {
   value: string;
   onNext: (str: string) => void;
   onPrevious: () => void;
-  isTextArea?: boolean; // New prop
+  isTextArea?: boolean;
 }
 
 export function InputTextCard({ title, subTitle, isRequired = false, placeholder, caption, value, onNext, onPrevious, isTextArea = false }: InputTextCardProps) {

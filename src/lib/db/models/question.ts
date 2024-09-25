@@ -4,8 +4,8 @@ export interface Question {
   type: string;
   key: string;
   title: string;
+  isRequired: boolean;
   placeholder?: string;
-  isRequired?: boolean;
   relations?: string[];
   subTitle?: string;
 }
@@ -45,7 +45,7 @@ export async function addQuestion(type: string, key: string, title: string, plac
 
 export async function getQuestions(): Promise<Question[]> {
   const result = await sql`
-    SELECT id, type, key, title, placeholder, is_required, relations, sub_title, created_at
+    SELECT id, type, key, title, placeholder, is_required as "isRequired", relations, sub_title as "subTitle", created_at
     FROM shaadi_toast_questions
     ORDER BY created_at ASC
   `;

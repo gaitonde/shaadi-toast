@@ -111,8 +111,8 @@ export function LandingPage() {
               <Image
                 src="/images/shaaditoast-2.jpg"
                 alt="Effortless and personal speech writing"
-                width={200}
-                height={400}
+                width={400}
+                height={300}
                 className="rounded-lg shadow-lg"
               />
             </div>
@@ -147,8 +147,8 @@ export function LandingPage() {
               <Image
                 src="/images/shaaditoast-4.jpg"
                 alt="Stress-free speech writing"
-                width={200}
-                height={400}
+                width={400}
+                height={300}
                 className="rounded-lg shadow-lg"
               />
             </div>
@@ -168,13 +168,13 @@ export function LandingPage() {
               {
                 name: "Laura D",
                 role: "Maid of honor",
-                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn&apos;t have done it without this amazing tool!",
+                content: "When my best friend asked me to be her maid of honor, I was thrilled, but the thought of giving a speech at her huge Indian wedding terrified me. My friend pointed me to ShaadiToast, and it was a lifesaver! It helped me craft a speech that was both funny and touching. The AI took the stories of our friendship and wove in cultural elements beautifully. The bride was moved to tears, and guests kept complimenting me throughout the night. I couldn't have done it without this amazing tool!",
                 image: "/images/laura-d.jpg"
               },
               {
                 name: "Arun P",
                 role: "Father of the bride",
-                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I&apos;ll cherish forever.",
+                content: "Watching my little girl get married was emotional enough, but the task of delivering a speech seemed overwhelming. ShaadiToast guided me through the process, helping me express my love, pride, and hopes for her future. The AI understood the significance of this moment and suggested beautiful ways to incorporate our family traditions. My daughter hugged me after the speech, saying it was perfect. ShaadiToast turned my jumbled thoughts into a heartfelt message I'll cherish forever.",
                 image: "/images/arun-p.jpg"
               },
               {
@@ -212,27 +212,27 @@ export function LandingPage() {
             {[
               {
                 question: "Why is ShaadiToast the right choice for me?",
-                answer: "ShaadiToast is perfect if you want to give a memorable speech but feel unsure about writing it. It&apos;s great for those who are short on time, nervous about public speaking, or just want to ensure their words truly resonate with the couple and guests."
+                answer: "ShaadiToast is perfect if you want to give a memorable speech but feel unsure about writing it. It's great for those who are short on time, nervous about public speaking, or just want to ensure their words truly resonate with the couple and guests."
               },
               {
                 question: "How do I create my speech using ShaadiToast?",
-                answer: "It&apos;s simple! Just select your speech type and answer a few questions about the couple and your relationship. Our AI then uses this information to craft a personalized speech that captures your voice and sentiments. You&apos;ll get your custom speech in seconds."
+                answer: "It's simple! Just select your speech type and answer a few questions about the couple and your relationship. Our AI then uses this information to craft a personalized speech that captures your voice and sentiments. You'll get your custom speech in seconds."
               },
               {
-                question: "What&apos;s the technology behind ShaadiToast?",
+                question: "What's the technology behind ShaadiToast?",
                 answer: "ShaadiToast uses advanced AI, powered by ChatGPT, to analyze your input and create a unique speech. It considers your writing style, the stories you share, and your desired tone to produce a speech that sounds authentically like you."
               },
               {
                 question: "How will I receive my speech?",
-                answer: "After completing our questionnaire, you&apos;ll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
+                answer: "After completing our questionnaire, you'll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
               },
               {
                 question: "What can I expect in terms of speech quality?",
-                answer: "You&apos;ll get a high-quality, personalized speech based on your input. While the AI does an excellent job, you might want to review and make minor adjustments to ensure everything is 100% accurate and to your liking."
+                answer: "You'll get a high-quality, personalized speech based on your input. While the AI does an excellent job, you might want to review and make minor adjustments to ensure everything is 100% accurate and to your liking."
               },
               {
-                question: "What&apos;s the typical length of a ShaadiToast speech?",
-                answer: "Most speeches are between 500-700 words, which translates to about 3-5 minutes when spoken. The length can vary based on how much information you provide. You&apos;re always free to add or remove content as you see fit."
+                question: "What's the typical length of a ShaadiToast speech?",
+                answer: "Most speeches are between 500-700 words, which translates to about 3-5 minutes when spoken. The length can vary based on how much information you provide. You're always free to add or remove content as you see fit."
               },
               {
                 question: "What types of wedding speeches can ShaadiToast help with?",
@@ -240,11 +240,11 @@ export function LandingPage() {
               },
               {
                 question: "How quickly can ShaadiToast generate my speech?",
-                answer: "Once you&apos;ve completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It&apos;s perfect whether you&apos;re planning well in advance or need a great speech at the last minute."
+                answer: "Once you've completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It's perfect whether you're planning well in advance or need a great speech at the last minute."
               },
               {
                 question: "Is my ShaadiToast speech truly original?",
-                answer: "Each speech is created uniquely based on the information you provide. We don&apos;t use templates, ensuring your speech is one-of-a-kind and personal to you and the couple."
+                answer: "Each speech is created uniquely based on the information you provide. We don't use templates, ensuring your speech is one-of-a-kind and personal to you and the couple."
               }
             ].map((faq, index) => (
               <div key={index}>

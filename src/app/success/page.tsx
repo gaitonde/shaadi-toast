@@ -3,7 +3,6 @@
 import { Suspense, useEffect, useState } from 'react'
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
-import { useSearchParams } from "next/navigation"
 import { ClipboardCopy } from 'lucide-react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -65,13 +64,12 @@ function SpeechContent({ content }: { content: string }) {
 
 export default function SuccessPage() {
   const [speechContent, setSpeechContent] = useState('')
-  const searchParams = useSearchParams()
 
   useEffect(() => {
     const localSpeech = localStorage.getItem('speechResult') || ''
     const json = localSpeech ? JSON.parse(localSpeech) : {}
     setSpeechContent(json.speech)
-  }, [searchParams])
+  }, [])
 
   return (
     <>

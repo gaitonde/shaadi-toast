@@ -46,7 +46,7 @@ export function MultipleChoiceCard({ title, subTitle, isRequired = false, relati
   }
 
   return (
-    <div className="flex items-center justify-center bg-[#FAF7F2] p-4">
+    <div className="flex items-center justify-center bg-[#FAF7F2] p-4 min-w-[1200px]">
       <div className="w-full max-w-2xl bg-white rounded-lg shadow-lg overflow-hidden">
         <div className="p-6">
           <h2 className={`text-2xl mb-4 text-center ${isError ? 'text-red-500' : 'text-gray-800'}`}>

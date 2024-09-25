@@ -17,6 +17,7 @@ interface FormattedCard {
     isRequired?: boolean;
     relations?: string[];
     subTitle?: string;
+    isTextArea?: boolean;
   };
 }
 
@@ -61,6 +62,7 @@ const Wizard = () => {
             isRequired: question.isRequired,
             relations: question.relations,
             subTitle: question.subTitle,
+            isTextArea: question.type.toLowerCase() === 'textarea',
           },
         }));
         setWizardCards(formattedCards);
@@ -166,9 +168,11 @@ const Wizard = () => {
       onNext: handleNext,
       onPrevious: handlePrevious,
       isRequired: card.props.isRequired,
-      isTextArea: false,
+      isTextArea: card.props.isTextArea,
       value: formData[(card as { key: string }).key] || '',
     };
+
+    console.log('XXX COMMONPROPS VALUE', card.key)
 
     switch ((card as { type: string }).type.toLowerCase()) {
       case 'text':
@@ -177,8 +181,9 @@ const Wizard = () => {
           title={card.props.title}
           value={commonProps.value as string}
           placeholder={card.props.placeholder}
+          inputType={card.key == 'email' ? 'email' : 'text'}
         />;
-      case 'multipleChoice':
+      case 'multiplechoice':
         return <MultipleChoiceCard
           {...commonProps}
           title={card.props.title}

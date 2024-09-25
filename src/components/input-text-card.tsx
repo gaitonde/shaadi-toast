@@ -12,23 +12,50 @@ export interface InputTextCardProps {
   onNext: (str: string) => void;
   onPrevious: () => void;
   isTextArea?: boolean;
+  inputType?: 'text' | 'email';
 }
 
-export function InputTextCard({ title, subTitle, isRequired = false, placeholder, caption, value, onNext, onPrevious, isTextArea = false }: InputTextCardProps) {
+export function InputTextCard({
+  title,
+  subTitle,
+  isRequired = false,
+  placeholder,
+  caption,
+  value,
+  onNext,
+  onPrevious,
+  isTextArea = false,
+  inputType = 'text'
+}: InputTextCardProps) {
   const [inputValue, setInputValue] = useState(value)
   const [isError, setIsError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
 
+  console.log('XXX inputType', inputType)
+
+  const validateEmail = (input: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(input);
+  };
+
   const handleNextClick = useCallback(() => {
+    console.log('XXX inputValue', inputValue)
+    console.log('XXX inputType', inputType)
+    debugger
     if (isRequired && inputValue.trim() === '') {
       setIsError(true)
+      setErrorMessage('This field is required.')
+    } else if (inputType === 'email' && !validateEmail(inputValue)) {
+      setIsError(true)
+      setErrorMessage('Please enter a valid email address.')
     } else {
       setIsError(false);
       const val = inputValue;
       setInputValue('');
       onNext(val);
     }
-  }, [isRequired, inputValue, onNext]);
+  }, [isRequired, inputValue, onNext, inputType]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -56,7 +83,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
     }
   }, [value]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setInputValue(e.target.value)
     if (e.target.value.trim() !== '') {
       setIsError(false)
@@ -64,11 +91,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
   }
 
   const handleInputBlur = () => {
-    if (isRequired && inputValue.trim() === '') {
-      setIsError(true)
-    } else {
-      setIsError(false)
-    }
+    handleNextClick()
   }
 
   return (
@@ -96,7 +119,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
                   isError ? 'border-red-500' : 'border-blue-300'
                 } text-black`}
                 value={inputValue}
-                // onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLInputElement>)}
+                onChange={(e) => handleInputChange(e as React.ChangeEvent<HTMLTextAreaElement>)}
                 onBlur={handleInputBlur}
                 placeholder={placeholder}
                 aria-label={title}
@@ -105,7 +128,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
             ) : (
               <input
                 ref={inputRef as React.RefObject<HTMLInputElement>}
-                type="text"
+                type={inputType}
                 className={`w-full p-3 border rounded-md ${
                   isError ? 'border-red-500' : 'border-blue-300'
                 } text-black`}
@@ -139,7 +162,7 @@ export function InputTextCard({ title, subTitle, isRequired = false, placeholder
 
           {isError && (
             <div className="bg-red-500 text-white text-sm py-1 px-2 rounded text-center w-auto mx-auto">
-              This field is required.
+              {errorMessage}
             </div>
           )}
           <button onClick={handleNextClick} className="flex items-center text-sm ml-auto">

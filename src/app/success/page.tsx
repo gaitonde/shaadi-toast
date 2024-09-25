@@ -37,9 +37,11 @@ function SpeechContent({ content }: { content: string }) {
 
   return (
     <section className="text-center mb-8">
+{/*
       <h1 className={`text-4xl md:text-5xl font-bold text-[#8b0000] mb-6 ${merriweather.className} leading-tight`}>
         Your Toast is Ready!
       </h1>
+ */}
       <div className="bg-white p-6 rounded-lg shadow-lg relative">
         <button
           onClick={handleCopy}

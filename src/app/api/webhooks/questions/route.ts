@@ -1,4 +1,4 @@
-import { getQuestionByKey, insertQuestions, deleteAllQuestions } from "@/app/actions";
+import { insertQuestions, deleteAllQuestions } from "@/app/actions";
 import { NextResponse } from "next/server";
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';

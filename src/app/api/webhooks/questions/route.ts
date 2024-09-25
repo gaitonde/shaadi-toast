@@ -34,9 +34,9 @@ export async function GET(request: Request) {
           question: row.get('Question')?.replace(/'/g, "''"), // Escape apostrophes for SQL
           subText: row.get('Subtext'),
           placeholder: row.get('Example Text'),
-          isRequired: row.get('Required') === 'Y', // Convert to boolean
+          isRequired: row.get('Required') === 'Y',
           questionType: row.get('Question Type'),
-          // relations: row.get('Choices')
+          relations: row.get('Choices')
         };
         questions.push(questionData);
         const question = await getQuestionByKey(questionData.key);

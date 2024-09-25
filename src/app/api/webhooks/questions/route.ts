@@ -1,4 +1,4 @@
-import { getQuestionByKey, insertQuestions, updateQuestions } from "@/app/actions";
+import { getQuestionByKey, insertQuestions, deleteAllQuestions } from "@/app/actions";
 import { NextResponse } from "next/server";
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
@@ -39,21 +39,22 @@ export async function GET(request: Request) {
       questions.push(questionData);
       console.log("QUESTION DATA: ", questionData);
 
-      const relations = questionData.questionType.toLowerCase() === 'multiplechoice' ? questionData.relations.split(',') : [];
+      const relations: string[] = questionData.questionType.toLowerCase() === 'multiplechoice' ? questionData.relations.split(',') : [];
       console.log("RELATIONS: ", relations);
 
-      const question = await getQuestionByKey(questionData.key);
-      if (question.length > 0) {
-        updateQuestions({
-          key: questionData.key,
-          question: questionData.question,
-          subTitle: questionData.subText,
-          placeholder: questionData.placeholder,
-          isRequired: questionData.isRequired,
-          questionType: questionData.questionType,
-          relations: relations
-        });
-      } else {
+      // const question = await getQuestionByKey(questionData.key);
+      // if (question.length > 0) {
+      //   updateQuestions({
+      //     key: questionData.key,
+      //     question: questionData.question,
+      //     subTitle: questionData.subText,
+      //     placeholder: questionData.placeholder,
+      //     isRequired: questionData.isRequired,
+      //     questionType: questionData.questionType,
+      //     relations: relations
+      //   });
+      // } else {
+        deleteAllQuestions();
         insertQuestions({
           key: questionData.key,
           question: questionData.question,
@@ -63,7 +64,7 @@ export async function GET(request: Request) {
           questionType: questionData.questionType,
           relations: relations
         });
-      }
+      // }
     }
 
     return NextResponse.json({ success: true, questions }, { status: 200 });

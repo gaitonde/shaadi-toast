@@ -64,6 +64,11 @@ export async function getQuestionByKey(key: string) {
   return runQuery(query, false, [key]);
 }
 
+export async function deleteAllQuestions() {
+  const query = `DELETE FROM shaadi_toast_questions`;
+  return runQuery(query, false);
+}
+
 async function runQuery(query: string, isInsert: boolean, values: unknown[] = []) {
   const client = await connect();
   try {

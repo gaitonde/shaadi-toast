@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { InputTextCard } from "@/components/input-text-card";
 import { MultipleChoiceCard } from "@/components/multiple-choice-card";
 import { Question } from "@/lib/db/models/question";
+import Line from "rc-progress/lib/Line";
 
 // New type definition
 interface FormattedCard {
@@ -40,6 +41,8 @@ const Wizard = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<Record<string, string | string[]>>({});
   const [wizardCards, setWizardCards] = useState<FormattedCard[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -69,6 +72,30 @@ const Wizard = () => {
     fetchQuestions();
   }, []);
 
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (isLoading) {
+      interval = setInterval(() => {
+        console.log('percentage', percentage);
+        setPercentage((prevPercent) => {
+          if (prevPercent >= 100) {
+            clearInterval(interval);
+            return 100; // Stop at 100%
+          }
+          return prevPercent + 15;
+        });
+      }, 500); // Update every 500ms
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [isLoading, percentage]);
+
   const handleNext = async (value: string | string[]) => {
     const currentCard = wizardCards[currentStep];
 
@@ -83,6 +110,7 @@ const Wizard = () => {
       setCurrentStep(currentStep + 1);
     } else {
       console.log('Final form data:', formData);
+      setIsLoading(true);
 
       // Make API call to generate speech
       try {
@@ -108,6 +136,8 @@ const Wizard = () => {
       } catch (error) {
         console.error('Error generating speech:', error);
         // Handle error (e.g., show error message to user)
+      } finally {
+        setIsLoading(false);
       }
     }
   };
@@ -119,6 +149,16 @@ const Wizard = () => {
   };
 
   const renderCard = () => {
+    if (isLoading) {
+      return (
+        <div className="text-center">
+          <p className="text-xl font-
+          semibold text-[#8b0000]">Crafting your toast now...</p>
+          <Line percent={percentage} strokeWidth={1} strokeColor="#8b0000" />
+        </div>
+      );
+    }
+
     const card = wizardCards[currentStep];
     if (!card) return null; // Handle case when card is undefined
 

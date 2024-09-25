@@ -1,81 +1,17 @@
 'use client'
 
-import { Suspense, useEffect, useState } from 'react'
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
-import { ClipboardCopy } from 'lucide-react'
 
 const inter = Inter({ subsets: ['latin'] })
 const merriweather = Merriweather({ weight: '400', subsets: ['latin'] })
 
-function ImportantSection() {
-  return (
-    <section className="bg-white p-6 rounded-lg shadow-lg mb-8">
-      <h2 className={`text-2xl font-bold text-[#8b0000] mb-4 ${merriweather.className}`}>
-        Important: Save Your Speech
-      </h2>
-      <p className="text-lg text-[#333] mb-6 font-bold">
-        Please copy your speech NOW. This speech will not be available once you leave this page.
-      </p>
-    </section>
-  )
-}
-
-function SpeechContent({ content }: { content: string }) {
-  const [isCopied, setIsCopied] = useState(false)
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(content)
-      setIsCopied(true)
-      setTimeout(() => setIsCopied(false), 2000)
-    } catch (err) {
-      console.error('Failed to copy text: ', err)
-    }
-  }
-
-  return (
-    <section className="text-center mb-8">
-{/*
-      <h1 className={`text-4xl md:text-5xl font-bold text-[#8b0000] mb-6 ${merriweather.className} leading-tight`}>
-        Your Toast is Ready!
-      </h1>
- */}
-      <div className="bg-white p-6 rounded-lg shadow-lg relative">
-        <button
-          onClick={handleCopy}
-          className="absolute top-4 right-4 p-2 bg-[#8b0000] text-white rounded-full hover:bg-[#a50000] transition-colors duration-300"
-          aria-label="Copy speech to clipboard"
-        >
-          <ClipboardCopy size={20} />
-        </button>
-        {isCopied && (
-          <div className="absolute top-4 right-16 bg-green-500 text-white px-2 py-1 rounded text-sm">
-            Copied!
-          </div>
-        )}
-        <p className="text-lg text-[#333] mb-4">
-          {content}
-        </p>
-      </div>
-    </section>
-  )
-}
-
-export default function SuccessPage() {
-  const [speechContent, setSpeechContent] = useState('')
-
-  useEffect(() => {
-    const localSpeech = localStorage.getItem('speechResult') || ''
-    const json = localSpeech ? JSON.parse(localSpeech) : {}
-    setSpeechContent(json.speech)
-  }, [])
-
+export default function RefundPolicy() {
   return (
     <>
       <Head>
-        <title>Your Toast is Ready! | ShaadiToast</title>
-        <meta name="description" content="Your personalized wedding toast is ready to view and copy" />
+        <title>Refund Policy | ShaadiToast</title>
+        <meta name="description" content="ShaadiToast refund policy for AI-generated wedding toasts" />
       </Head>
       <div className={`min-h-screen bg-[#fff5e6] ${inter.className}`}>
         <header className="bg-[#8b0000] text-white py-4 sticky top-0 z-50">
@@ -84,10 +20,54 @@ export default function SuccessPage() {
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-8">
-          <ImportantSection />
-          <Suspense fallback={<div>Loading...</div>}>
-            <SpeechContent content={speechContent} />
-          </Suspense>
+          <section className="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h1 className={`text-3xl font-bold text-[#8b0000] mb-6 ${merriweather.className}`}>
+              Refund Policy
+            </h1>
+            <div className="space-y-4 text-[#333]">
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Refund Eligibility
+              </h2>
+              <p>
+                Customers can request a full refund within seven (7) calendar days from the purchase date.
+              </p>
+
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Refund Request Process
+              </h2>
+              <p>
+                To initiate a refund, please reach out to our customer support team at <strong>shaaditoast@greenpenailabs.com</strong>, providing your email address and a brief explanation for the request.
+              </p>
+
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Refund Timeframe
+              </h2>
+              <p>
+                Once approved, refunds will be processed and returned to the original payment method within ten (10) business days.
+              </p>
+
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Delayed or Missing Refunds
+              </h2>
+              <p>
+                If your refund hasn&apos;t been received within the expected timeframe, please check with your bank or credit card provider, as it may take some time for the refund to be posted. If you&apos;ve done this and still haven&apos;t received it, contact us at <strong>shaaditoast@greenpenailabs.com</strong>.
+              </p>
+
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Discounted Purchases
+              </h2>
+              <p>
+                Speeches purchased with a discount or coupon code are not eligible for refunds.
+              </p>
+
+              <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
+                Policy Updates
+              </h2>
+              <p>
+                ShaadiToast reserves the right to modify this refund policy at any time. Changes will be updated on this page.
+              </p>
+            </div>
+          </section>
         </main>
 
         <footer className="bg-[#8b0000] text-white py-12">
@@ -104,7 +84,7 @@ export default function SuccessPage() {
                   <h3 className="font-semibold mb-2">Pages</h3>
                   <ul className="space-y-2">
                     <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Craft Your Speech</a></li>
-                    <li><a href="/refund-policy" className="hover:text-[#ffd700] transition-colors duration-300">Refund policy</a></li>
+                    <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Refund policy</a></li>
                     <li><a href="https://www.shaaditoast.com" className="hover:text-[#ffd700] transition-colors duration-300">FAQs</a></li>
                   </ul>
                 </div>

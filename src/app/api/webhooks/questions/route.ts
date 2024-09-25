@@ -6,7 +6,7 @@ import { JWT } from 'google-auth-library';
 //TODO: do more/better validation to ensure request is coming in from GoogleSheets
 export async function GET(request: Request) {
   console.log('in prompt webhook')
-  console.debug('in prompt webhook', request)
+  // console.debug('in prompt webhook', request)
 
   try {
     const serviceAccountAuth = new JWT({
@@ -30,6 +30,7 @@ export async function GET(request: Request) {
     for(let i=0; i<rows.length; i++) {
       const row = rows[i];
       const questionData = {
+        id: row.rowNumber,
         key: row.get('Key'),
         question: row.get('Question')?.replace(/'/g, "''"), // Escape apostrophes for SQL
         subText: row.get('Subtext'),
@@ -39,33 +40,19 @@ export async function GET(request: Request) {
         relations: row.get('Choices')
       };
       questions.push(questionData);
-      console.log("QUESTION DATA: ", questionData);
 
-      const relations: string[] = questionData.questionType.toLowerCase() === 'multiplechoice' ? questionData.relations.split(',') : [];
-      console.log("RELATIONS: ", relations);
+      const relations: string[] = questionData.questionType.toLowerCase() === 'multiplechoice' ? questionData.relations.split(',') : null;
 
-      // const question = await getQuestionByKey(questionData.key);
-      // if (question.length > 0) {
-      //   updateQuestions({
-      //     key: questionData.key,
-      //     question: questionData.question,
-      //     subTitle: questionData.subText,
-      //     placeholder: questionData.placeholder,
-      //     isRequired: questionData.isRequired,
-      //     questionType: questionData.questionType,
-      //     relations: relations
-      //   });
-      // } else {
-        insertQuestions({
-          key: questionData.key,
-          question: questionData.question,
-          subTitle: questionData.subText,
-          placeholder: questionData.placeholder,
-          isRequired: questionData.isRequired,
-          questionType: questionData.questionType,
-          relations: relations
-        });
-      // }
+      insertQuestions({
+        id: questionData.id,
+        key: questionData.key,
+        question: questionData.question,
+        subTitle: questionData.subText,
+        placeholder: questionData.placeholder,
+        isRequired: questionData.isRequired,
+        questionType: questionData.questionType,
+        relations: relations
+      });
     }
 
     return NextResponse.json({ success: true, questions }, { status: 200 });

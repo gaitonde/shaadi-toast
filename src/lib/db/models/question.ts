@@ -47,7 +47,7 @@ export async function getQuestions(): Promise<Question[]> {
   const result = await sql`
     SELECT id, type, key, title, placeholder, is_required as "isRequired", relations, sub_title as "subTitle", created_at
     FROM shaadi_toast_questions
-    ORDER BY created_at ASC
+    ORDER BY id ASC
   `;
   return result.rows as Question[];
 }

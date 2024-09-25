@@ -11,26 +11,27 @@ async function connect() {
 }
 
 export async function insertQuestions(questionData: {
+  id: number;
   key: string;
   question: string;
   subTitle: string;
   placeholder: string;
   isRequired: boolean;
   questionType: string;
-  relations: string[];
+  relations: string[] | null;
 }) {
 
-  // choices = '${choices}',
-  // updated_at = '${now}'
-  // console.log('relations: ', questionData.options);
-  runQuery(`INSERT INTO shaadi_toast_questions(type, key, title, placeholder, is_required, sub_title, relations) VAlUES(
+  const relationsString = questionData.relations ? `ARRAY[${questionData.relations.map(r => `'${r}'`).join(',')}]` : 'NULL';
+
+  runQuery(`INSERT INTO shaadi_toast_questions(id, type, key, title, placeholder, is_required, sub_title, relations) VALUES(
+    ${questionData.id},
     '${questionData.questionType}',
     '${questionData.key}',
     '${questionData.question}',
     '${questionData.placeholder}',
     '${questionData.isRequired}',
     '${questionData.subTitle}',
-    '${questionData.relations}'
+    ${relationsString}
   );
   `, false);
 }
@@ -45,9 +46,6 @@ export async function updateQuestions(questionData: {
   relations: string[];
 }) {
 
-  // choices = '${choices}',
-  // updated_at = '${now}'
-  // console.log('relations: ', questionData.options);
   runQuery(`UPDATE shaadi_toast_questions SET
     type = '${questionData.questionType}',
     title = '${questionData.question}',

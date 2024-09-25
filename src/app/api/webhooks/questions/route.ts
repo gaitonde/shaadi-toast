@@ -6,7 +6,7 @@ import { JWT } from 'google-auth-library';
 //TODO: do more/better validation to ensure request is coming in from GoogleSheets
 export async function GET(request: Request) {
   console.log('in prompt webhook')
-  // console.debug('in prompt webhook', request)
+  console.debug('in prompt webhook', request)
 
   try {
     const serviceAccountAuth = new JWT({

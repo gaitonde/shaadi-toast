@@ -2,6 +2,7 @@
 
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
+import Link from "next/link"
 
 const inter = Inter({ subsets: ['latin'] })
 const merriweather = Merriweather({ weight: '400', subsets: ['latin'] })
@@ -16,7 +17,9 @@ export default function RefundPolicy() {
       <div className={`min-h-screen bg-[#fff5e6] ${inter.className}`}>
         <header className="bg-[#8b0000] text-white py-4 sticky top-0 z-50">
           <div className="container mx-auto px-4">
+            <Link href="/" className="hover:text-[#ffd700] transition-colors duration-300">
             <h1 className={`text-2xl ${merriweather.className} font-bold`}>ShaadiToast</h1>
+            </Link>
           </div>
         </header>
         <main className="max-w-4xl mx-auto px-4 py-8">

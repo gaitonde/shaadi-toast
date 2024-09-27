@@ -155,7 +155,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="mb-16" id="faq" >
+        <section className="mb-16" >
           <h2 className={`text-3xl md:text-4xl font-bold text-[#8b0000] mb-6 text-center ${merriweather.className}`}>
             Hear from our happy users
           </h2>
@@ -204,7 +204,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="mb-16">
+        <section className="mb-16" id="faq" >
           <h2 className={`text-3xl md:text-4xl font-bold text-[#8b0000] mb-6 text-center ${merriweather.className}`}>
             Have questions?
           </h2>

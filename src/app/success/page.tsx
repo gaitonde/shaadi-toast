@@ -15,7 +15,7 @@ function ImportantSection() {
         Important: Save Your Speech
       </h2>
       <p className="text-lg text-[#333] mb-6 font-bold">
-        Please copy your speech NOW. This speech will not be available once you leave this page.
+        Please copy your speech NOW. This speech will not be available once you leave this page. \nTreat this AI-generated speech as a near-final draft, but feel free to refine it as needed to make it perfect for your occasion.
       </p>
     </section>
   )

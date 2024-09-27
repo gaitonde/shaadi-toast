@@ -15,7 +15,9 @@ export async function POST(request: Request) {
                 model: 'gpt-3.5-turbo',
                 messages: [{
                     role: 'user',
-                    content: `Write a heartfelt and engaging 2-minute wedding speech or toast. Include a reference to Priyanka Chopra and to Hasan Minhaj in the first sentence. Use the following information to create a personalized speech:
+                    content: `Act like an expert wedding speech writer. Write a heartfelt and engaging wedding speech or toast. Avoid cliches. Use the following information, if the values exist use them, but do NOT make up new information, to create a personalized speech. Be careful to NOT create new made up stories:
+                    Length of Speech: 3-5 minutes
+                    Any elders to thank: ${prompt.speakerElderThanks}
                     Speaker's name: ${prompt.firstName}
                     Speaker's relationship to the couple: ${prompt.requestorRelationshipToYou}
                     Who is giving the speech (e.g., best man, maid of honor): ${prompt.requestorType}

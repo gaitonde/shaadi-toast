@@ -219,16 +219,16 @@ export function LandingPage() {
                 answer: "It's simple! Just select your speech type and answer a few questions about the couple and your relationship. Our AI then uses this information to craft a personalized speech that captures your voice and sentiments. You'll get your custom speech in seconds."
               },
               {
-                question: "What's the technology behind ShaadiToast?",
-                answer: "ShaadiToast uses advanced AI, powered by ChatGPT, to analyze your input and create a unique speech. It considers your writing style, the stories you share, and your desired tone to produce a speech that sounds authentically like you."
-              },
-              {
-                question: "How will I receive my speech?",
-                answer: "After completing our questionnaire, you'll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
+                question: "How quickly can ShaadiToast generate my speech?",
+                answer: "Once you've completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It's perfect whether you're planning well in advance or need a great speech at the last minute."
               },
               {
                 question: "What can I expect in terms of speech quality?",
                 answer: "You'll get a high-quality, personalized speech based on your input. While the AI does an excellent job, you might want to review and make minor adjustments to ensure everything is 100% accurate and to your liking."
+              },
+              {
+                question: "How will I receive my speech?",
+                answer: "After completing our questionnaire, you'll instantly receive three different versions of your speech on-screen. You can then choose your favorite or mix elements from each to create your perfect speech."
               },
               {
                 question: "What's the typical length of a ShaadiToast speech?",
@@ -239,12 +239,12 @@ export function LandingPage() {
                 answer: "ShaadiToast can assist with speeches for the Best Man, Maid of Honor, Bride, Groom, and parents. You can set the tone to be emotional, humorous, or a mix of both - whatever suits your style and the occasion."
               },
               {
-                question: "How quickly can ShaadiToast generate my speech?",
-                answer: "Once you've completed the questionnaire, ShaadiToast typically takes just 2-3 minutes to generate your speech. It's perfect whether you're planning well in advance or need a great speech at the last minute."
-              },
-              {
                 question: "Is my ShaadiToast speech truly original?",
                 answer: "Each speech is created uniquely based on the information you provide. We don't use templates, ensuring your speech is one-of-a-kind and personal to you and the couple."
+              },
+              {
+                question: "What's the technology behind ShaadiToast?",
+                answer: "ShaadiToast uses advanced AI, powered by ChatGPT, to analyze your input and create a unique speech. It considers your writing style, the stories you share, and your desired tone to produce a speech that sounds authentically like you."
               }
             ].map((faq, index) => (
               <div key={index}>

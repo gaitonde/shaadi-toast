@@ -160,7 +160,7 @@ export function LandingPage() {
             Hear from our happy users
           </h2>
           <p className="text-lg md:text-xl text-[#333] max-w-3xl mx-auto mb-12 text-center">
-            Our AI-powered speeches have been the highlight of countless weddings. But don&apos;t just take our word for it, hear from those who have toasted with us.
+            Our AI-crafted speeches have been the centerpiece of many memorable weddings. Let the experiences of others speak for themselves.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">

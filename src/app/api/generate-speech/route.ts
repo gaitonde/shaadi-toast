@@ -20,7 +20,7 @@ export async function POST(request: Request) {
                     Tone of the speech: ${prompt.speechTone}
                     Any elders to thank: ${prompt.speakerElderThanks}
                     Speaker's name: ${prompt.firstName}
-                    What is the speaker's role (e.g., best man, maid of honor): ${prompt.requestorType}
+                    What is the speaker's role (e.g., best man, maid of honor): ${prompt.speakerType}
                     Name of the person who requested the speech: ${prompt.requestor}
             //        Pronouns of the person who requested the speech: ${prompt.requestorPronouns}
                     Speaker's relationship to the requestor: ${prompt.requestorRelationshipToYou}

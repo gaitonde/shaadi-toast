@@ -155,7 +155,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section className="mb-16">
+        <section className="mb-16" id="faq" >
           <h2 className={`text-3xl md:text-4xl font-bold text-[#8b0000] mb-6 text-center ${merriweather.className}`}>
             Hear from our happy users
           </h2>
@@ -284,7 +284,7 @@ export function LandingPage() {
                 <ul className="space-y-2">
                   <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Craft your speech</a></li>
                   <li><a href="/refund-policy" className="hover:text-[#ffd700] transition-colors duration-300">Refund policy</a></li>
-                  <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">FAQs</a></li>
+                  <li><a href="#faq" className="hover:text-[#ffd700] transition-colors duration-300">FAQs</a></li>
                 </ul>
               </div>
               <div>

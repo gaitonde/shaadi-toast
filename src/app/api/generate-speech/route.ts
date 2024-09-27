@@ -15,7 +15,7 @@ export async function POST(request: Request) {
                 model: 'gpt-3.5-turbo',
                 messages: [{
                     role: 'user',
-                    content: `Write a heartfelt and engaging 2-minute wedding speech or toast. Include a reference to Priyanka Chopra and to Hasan Minhaj. Use the following information to create a personalized speech:
+                    content: `Write a heartfelt and engaging 2-minute wedding speech or toast. Include a reference to Priyanka Chopra and to Hasan Minhaj in the first sentence. Use the following information to create a personalized speech:
                     Speaker's name: ${prompt.firstName}
                     Speaker's relationship to the couple: ${prompt.requestorRelationshipToYou}
                     Who is giving the speech (e.g., best man, maid of honor): ${prompt.requestorType}

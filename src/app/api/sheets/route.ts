@@ -17,7 +17,7 @@ export async function GET() {
     const sheet = doc.sheetsById[0];
     console.log("SHEET TITLE: ", sheet.title);
 
-    const rows = await sheet.getRows({limit: 15});
+    const rows = await sheet.getRows({limit: 10});
     const questions = [];
 
     for(let i=0; i<rows.length; i++) {

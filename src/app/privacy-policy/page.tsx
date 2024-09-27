@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
               <p className="font-bold">Last Updated: 09/10/2024</p>
               
               <p>
-                GreenPen AI Labs, Inc. doing business as ShaadiToast (&quot;ShaadiToast,&quot; &quot;we,&quot; &quot;us,&quot; and &quot;our&quot;) provides an AI-powered tool to assist our customers in writing wedding speeches. This Privacy Policy is designed to help you understand how we collect, use, and share your personal information and to help you understand and exercise your privacy rights.
+                ShaadiToast (&quot;ShaadiToast,&quot; &quot;we,&quot; &quot;us,&quot; and &quot;our&quot;) provides an AI-powered tool to assist our customers in writing wedding speeches. This Privacy Policy is designed to help you understand how we collect, use, and share your personal information and to help you understand and exercise your privacy rights.
               </p>
 
               <h2 className={`text-xl font-bold text-[#8b0000] mt-4 ${merriweather.className}`}>
@@ -326,7 +326,7 @@ export default function PrivacyPolicy() {
               <p className="mt-2">
                 ShaadiToast<br />
                 2625 Middlefield Rd #435<br />
-                PaloAlto, CA 94306<br />
+                Palo Alto, CA 94306<br />
                 shaaditoast@greenpenailabs.com
               </p>
             </div>

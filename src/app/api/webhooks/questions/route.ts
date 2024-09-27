@@ -22,7 +22,7 @@ export async function GET(request: Request) {
     const sheet = doc.sheetsById[1469416569];
     console.log("SHEET TITLE: ", sheet.title);
 
-    const rows = await sheet.getRows({limit: 10});
+    const rows = await sheet.getRows({limit: 20});
     const questions = [];
 
     await deleteAllQuestions();

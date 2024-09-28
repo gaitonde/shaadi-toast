@@ -15,22 +15,24 @@ export async function POST(request: Request) {
                 model: 'gpt-3.5-turbo',
                 messages: [{
                     role: 'user',
-                    content: `Write a heartfelt and engaging 2-minute wedding speech or toast. Use the following information to create a personalized speech:
+                    content: `Act like an expert wedding speech writer. Write a heartfelt and engaging wedding speech or toast. Avoid cliches. Use the following information, if the values exist use them, but do NOT make up new information, to create a personalized speech. Be careful to NOT create new made up stories:
+                    Length of Speech: 3-5 minutes
+                    Tone of the speech: ${prompt.speechTone}
+                    Any elders to thank: ${prompt.speakerElderThanks}
                     Speaker's name: ${prompt.firstName}
-                    Speaker's relationship to the couple: ${prompt.requestorRelationshipToYou}
-                    Who is giving the speech (e.g., best man, maid of honor): ${prompt.requestorType}
-                    Tone of the speech (e.g., humorous, sentimental, formal, light-hearted): ${prompt.speechTone}
+                    What is the speaker's role (e.g., best man, maid of honor): ${prompt.speakerType}
                     Name of the person who requested the speech: ${prompt.requestor}
-                    Pronouns of the person who requested the speech: ${prompt.requestorPronouns}
-                    How long the speaker has known the person: ${prompt.timeKnown}
+            //        Pronouns of the person who requested the speech: ${prompt.requestorPronouns}
+                    Speaker's relationship to the requestor: ${prompt.requestorRelationshipToYou}
+                    How long the speaker has known the requestor: ${prompt.timeKnown}
                     Three words to describe the person who requested the speech: ${prompt.threeWordsForRequestor}
                     Who the person is marrying: ${prompt.spouseName}
-                    Pronouns of the person they are marrying: ${prompt.spousePronouns}
+            //        Pronouns of the person they are marrying: ${prompt.spousePronouns}
                     Three words to describe the person they are marrying: ${prompt.spouseThreeWordsWho}
-                    How and when the speaker first met the person they are marrying, including a memorable early story: ${prompt.firstMetStory}
+            // How and when the speaker first met the person they are marrying, including a memorable early story: ${prompt.firstMetStory}
                     A story about a time that wasn't enjoyable but now brings a smile or laugh: ${prompt.smileStory}
                     What makes the couple's relationship unique, including a favorite story or key description: ${prompt.favoriteStory}
-                    The speaker's hopes and dreams for the couple's life together: ${prompt.hopesAndDreams};
+            // The speaker's hopes and dreams for the couple's life together: ${prompt.hopesAndDreams};
                     Write the speech in a way that reflects the speaker's connection to the couple, incorporates their personal stories, and delivers a warm, memorable message that honors their relationship and special day.`
                 }],
                 max_tokens: 500,

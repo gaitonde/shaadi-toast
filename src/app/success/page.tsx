@@ -15,7 +15,7 @@ function ImportantSection() {
         Important: Save Your Speech
       </h2>
       <p className="text-lg text-[#333] mb-6 font-bold">
-        Please copy your speech NOW. This speech will not be available once you leave this page.
+        Please copy your speech NOW. This speech will not be available once you leave this page. \nTreat this AI-generated speech as a near-final draft, but feel free to refine it as needed to make it perfect for your occasion.
       </p>
     </section>
   )
@@ -111,7 +111,7 @@ export default function SuccessPage() {
                 <div>
                   <h3 className="font-semibold mb-2">Legal</h3>
                   <ul className="space-y-2">
-                    <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Terms</a></li>
+                    <li><a href="/terms" className="hover:text-[#ffd700] transition-colors duration-300">Terms</a></li>
                     <li><a href="/privacy-policy" className="hover:text-[#ffd700] transition-colors duration-300">Privacy</a></li>
                     <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Contact</a></li>
                   </ul>

@@ -94,7 +94,7 @@ export default function RefundPolicy() {
                 <div>
                   <h3 className="font-semibold mb-2">Legal</h3>
                   <ul className="space-y-2">
-                    <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Terms</a></li>
+                    <li><a href="/terms" className="hover:text-[#ffd700] transition-colors duration-300">Terms</a></li>
                     <li><a href="/privacy-policy" className="hover:text-[#ffd700] transition-colors duration-300">Privacy</a></li>
                     <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Contact</a></li>
                   </ul>

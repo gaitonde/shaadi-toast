@@ -269,8 +269,8 @@ export default function Component() {
               <div>
                 <h3 className="font-semibold mb-2">Legal</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/terms-and-conditions" className="hover:text-[#ffd700] transition-colors duration-300">Terms</Link></li>
-                  <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Privacy</a></li>
+                  <li><Link href="/terms" className="hover:text-[#ffd700] transition-colors duration-300">Terms</Link></li>
+                  <li><a href="/privacy-policy" className="hover:text-[#ffd700] transition-colors duration-300">Privacy</a></li>
                   <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Contact</a></li>
                 </ul>
               </div>

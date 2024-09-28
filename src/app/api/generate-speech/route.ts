@@ -1,10 +1,20 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-export async function POST(request: Request) {
-    const { prompt } = await request.json();
+export async function POST(request: NextRequest) {
+    if (!OPENAI_API_KEY) {
+        return NextResponse.json({ error: 'OpenAI API key is not configured' }, { status: 500 });
+    }
+
     try {
+        const body = await request.json();
+        const { prompt } = body;
+
+        if (!prompt) {
+            return NextResponse.json({ error: 'Prompt is required' }, { status: 400 });
+        }
+
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -40,13 +50,16 @@ export async function POST(request: Request) {
         });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`OpenAI API error: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
         return NextResponse.json({ speech: data.choices[0].message.content });
     } catch (error) {
         console.error('Error generating speech:', error);
-        return NextResponse.json({ error: 'Failed to generate speech' }, { status: 500 });
+        return NextResponse.json(
+            { error: 'Failed to generate speech' },
+            { status: 500 }
+        );
     }
 }

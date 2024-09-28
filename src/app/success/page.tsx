@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useEffect, useState } from 'react'
+import { Suspense, useEffect, useState, useRef } from 'react'
 import { Inter, Merriweather } from 'next/font/google'
 import Head from 'next/head'
 import { ClipboardCopy } from 'lucide-react'
@@ -64,11 +64,30 @@ function SpeechContent({ content }: { content: string }) {
 
 export default function SuccessPage() {
   const [speechContent, setSpeechContent] = useState('')
+  // const [isEmailSent, setIsEmailSent] = useState(false)
+  const emailSentRef = useRef(false)
 
   useEffect(() => {
     const localSpeech = localStorage.getItem('speechResult') || ''
     const json = localSpeech ? JSON.parse(localSpeech) : {}
+    const email = localStorage.getItem('email') || ''
     setSpeechContent(json.speech)
+
+    if (!emailSentRef.current) {
+      emailSentRef.current = true
+      fetch('/api/google-sheets/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, speech: json.speech })
+      })
+      .then(() => emailSentRef.current = true)
+      .catch(error => {
+        console.error('Failed to send email:', error)
+        emailSentRef.current = false // Reset if there's an error
+      })
+    }
   }, [])
 
   return (

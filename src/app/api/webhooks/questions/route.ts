@@ -1,34 +1,44 @@
 import { insertQuestions, deleteAllQuestions } from "@/app/actions";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
-//TODO: do more/better validation to ensure request is coming in from GoogleSheets
-export async function GET(request: Request) {
-  console.log('in prompt webhook')
-  console.debug('in prompt webhook', request)
+const ENV_GOOGLE_SHEET_ID = '1VrRNi7H8tdFKn_MHvMSFxahE_JUODtYi1_IlfYNKItg';
+//TODO: should have proper naming convention for the sheet title and env variable names
+const ENV_GOOGLE_SHEET_TITLE = 'ShaadiToast';
 
-  try {
-    const serviceAccountAuth = new JWT({
+let serviceAccountAuth: JWT | null = null;
+
+function getServiceAccountAuth(): JWT {
+  if (!serviceAccountAuth) {
+    if (!process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || !process.env.GOOGLE_PRIVATE_KEY) {
+      throw new Error('Missing Google service account credentials');
+    }
+    serviceAccountAuth = new JWT({
       email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-        key: process.env.GOOGLE_PRIVATE_KEY,
+      key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Handle newline characters
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
+  }
+  return serviceAccountAuth;
+}
 
-    const doc = new GoogleSpreadsheet('1VrRNi7H8tdFKn_MHvMSFxahE_JUODtYi1_IlfYNKItg', serviceAccountAuth);
+//TODO: do more/better validation to ensure request is coming in from GoogleSheets
+export async function GET() {
+  console.log('in prompt webhook')
+
+  try {
+    const auth = getServiceAccountAuth();
+    const doc = new GoogleSpreadsheet(ENV_GOOGLE_SHEET_ID, auth);
     await doc.loadInfo();
-    console.log("DOC TITLE: ", doc.title);
 
-    const sheet = doc.sheetsById[1469416569];
-    console.log("SHEET TITLE: ", sheet.title);
-
-    const rows = await sheet.getRows({limit: 20});
+    const sheet = doc.sheetsByTitle[ENV_GOOGLE_SHEET_TITLE];
+    const rows = await sheet.getRows();
     const questions = [];
 
     await deleteAllQuestions();
 
-    for(let i=0; i<rows.length; i++) {
-      const row = rows[i];
+    for(const row of rows) {
       const questionData = {
         id: row.rowNumber,
         key: row.get('Key'),
@@ -55,9 +65,20 @@ export async function GET(request: Request) {
       });
     }
 
-    return NextResponse.json({ success: true, questions }, { status: 200 });
+    return NextResponse.json({
+      success: true,
+      questions: questions,
+      count: questions.length,
+      title: sheet.title,
+      sheetId: sheet.sheetId,
+    }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error }, { status: 500 })
+    return NextResponse.json({
+      success: false,
+      error: error,
+      title: ENV_GOOGLE_SHEET_TITLE,
+      sheetId: ENV_GOOGLE_SHEET_ID
+    }, { status: 500 })
   }
 }

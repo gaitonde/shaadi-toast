@@ -3,10 +3,6 @@ import { NextResponse } from "next/server";
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 
-const ENV_GOOGLE_SHEET_ID = '1VrRNi7H8tdFKn_MHvMSFxahE_JUODtYi1_IlfYNKItg';
-//TODO: should have proper naming convention for the sheet title and env variable names
-const ENV_GOOGLE_SHEET_TITLE = 'ShaadiToast';
-
 let serviceAccountAuth: JWT | null = null;
 
 function getServiceAccountAuth(): JWT {
@@ -29,10 +25,10 @@ export async function GET() {
 
   try {
     const auth = getServiceAccountAuth();
-    const doc = new GoogleSpreadsheet(ENV_GOOGLE_SHEET_ID, auth);
+    const doc = new GoogleSpreadsheet(process.env.ENV_GOOGLE_SHEET_ID as string, auth);
     await doc.loadInfo();
 
-    const sheet = doc.sheetsByTitle[ENV_GOOGLE_SHEET_TITLE];
+    const sheet = doc.sheetsByTitle[process.env.GOOGLE_SHEET_BASE + 'questions'];
     const rows = await sheet.getRows();
     const questions = [];
 
@@ -77,8 +73,7 @@ export async function GET() {
     return NextResponse.json({
       success: false,
       error: error,
-      title: ENV_GOOGLE_SHEET_TITLE,
-      sheetId: ENV_GOOGLE_SHEET_ID
+      sheetId: process.env.GOOGLE_SHEET_ID
     }, { status: 500 })
   }
 }

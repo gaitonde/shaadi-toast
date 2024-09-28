@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID as string, jwt);
     await doc.loadInfo();
 
-    const sheet = doc.sheetsByTitle[process.env.GOOGLE_SHEET_TITLE as string];
+    const sheet = doc.sheetsByTitle[process.env.GOOGLE_SHEET_BASE + 'email'];
     const rows = await sheet.getRows();
     const templateRow = rows[0];
 

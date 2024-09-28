@@ -261,8 +261,8 @@ export default function Component() {
               <div>
                 <h3 className="font-semibold mb-2">Pages</h3>
                 <ul className="space-y-2">
-                  <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Craft Your Speech</a></li>
-                  <li><a href="#" className="hover:text-[#ffd700] transition-colors duration-300">Refund Policy</a></li>
+                  <li><a href="https://www.shaaditoast.com" className="hover:text-[#ffd700] transition-colors duration-300">Craft Your Speech</a></li>
+                  <li><a href="/refund-policy" className="hover:text-[#ffd700] transition-colors duration-300">Refund Policy</a></li>
                   <li><a href="https://www.shaaditoast.com" className="hover:text-[#ffd700] transition-colors duration-300">FAQs</a></li>
                 </ul>
               </div>
